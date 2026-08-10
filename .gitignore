@@ -1,0 +1,32 @@
+# Build artifacts
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.cache
+*.pdb
+*.log
+
+# NuGet packages
+packages/
+*.nupkg
+
+# Publish output
+*.Publish.xml
+
+# Rider
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+
+# IIS Express
+/.vs/**/applicationhost.config
+
+# Others
+Thumbs.db
+.DS_Store

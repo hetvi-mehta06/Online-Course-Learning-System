@@ -1,0 +1,109 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="OnlineCourse.Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>LearnSphere - Admin Panel</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="css/jquery.timepicker.css" />
+    <link rel="stylesheet" href="css/flaticon.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light">
+
+        <div class="container">
+
+<a class="navbar-brand" href="Dashboard.aspx">
+    <span>Learn</span>Sphere Admin
+</a>
+
+<button class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#adminNav">
+
+<span class="fa fa-bars"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="adminNav">
+
+<ul class="navbar-nav ml-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="Dashboard.aspx">Dashboard</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="ManageUsers.aspx">Users</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="ManageCourses.aspx">Courses</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="ManageCategories.aspx">Categories</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="ManageVideos.aspx">Videos</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="ManageEnrollments.aspx">Enrollments</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="ManageFeedback.aspx">Feedback</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="Logout.aspx">Logout</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+
+
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
