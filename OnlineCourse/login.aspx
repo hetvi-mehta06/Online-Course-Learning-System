@@ -32,6 +32,7 @@
                     <h2 class="text-center mb-4">Login to LearnSphere</h2>
 
                     <form>
+                       
 
                <div class="form-group">
 
@@ -86,11 +87,13 @@
         ID="btnLogin"
         runat="server"
         Text="Login"
-        CssClass="btn btn-primary btn-block" />
+        CssClass="btn btn-primary btn-block" OnClick="btnLogin_Click" />
 
 </div>
 
 <hr />
+              
+</form>
 
 <p class="text-center">
 

@@ -74,6 +74,7 @@
     <Content Include="App_Data\OnlineCourse_log.ldf">
       <DependentUpon>OnlineCourse.mdf</DependentUpon>
     </Content>
+    <Content Include="ASPNETExam.aspx" />
     <Content Include="blog-single.html" />
     <Content Include="blog.html" />
     <Content Include="categories.aspx" />
@@ -96,12 +97,15 @@
     <Content Include="css\owl.theme.default.min.css" />
     <Content Include="css\style.css" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="DatabaseExam.aspx" />
     <Content Include="enrollcourse.aspx" />
+    <Content Include="Exam.aspx" />
     <Content Include="feedback.aspx" />
     <Content Include="fonts\flaticon\backup.txt" />
     <Content Include="fonts\flaticon\font\flaticon.css" />
     <Content Include="fonts\flaticon\font\flaticon.html" />
     <Content Include="fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="HTMLCSSExam.aspx" />
     <Content Include="images\about-1.jpg" />
     <Content Include="images\about.jpg" />
     <Content Include="images\bg_1.jpg" />
@@ -143,6 +147,8 @@
     <Content Include="index2.aspx" />
     <Content Include="instructor-details.html" />
     <Content Include="instructor.html" />
+    <Content Include="JavaExam.aspx" />
+    <Content Include="JavaScriptExam.aspx" />
     <Content Include="js\bootstrap-datepicker.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\google-map.js" />
@@ -171,8 +177,10 @@
     <Content Include="MyCourses.aspx" />
     <Content Include="Panel.aspx" />
     <Content Include="profile.aspx" />
+    <Content Include="PythonExam.aspx" />
     <Content Include="readme.txt" />
     <Content Include="register.aspx" />
+    <Content Include="StudentDashboard.aspx" />
     <Content Include="videolesson.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -197,6 +205,13 @@
     </Compile>
     <Compile Include="AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASPNETExam.aspx.cs">
+      <DependentUpon>ASPNETExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASPNETExam.aspx.designer.cs">
+      <DependentUpon>ASPNETExam.aspx</DependentUpon>
     </Compile>
     <Compile Include="categories.aspx.cs">
       <DependentUpon>categories.aspx</DependentUpon>
@@ -240,6 +255,13 @@
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseExam.aspx.cs">
+      <DependentUpon>DatabaseExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DatabaseExam.aspx.designer.cs">
+      <DependentUpon>DatabaseExam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="enrollcourse.aspx.cs">
       <DependentUpon>enrollcourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -247,12 +269,26 @@
     <Compile Include="enrollcourse.aspx.designer.cs">
       <DependentUpon>enrollcourse.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Exam.aspx.cs">
+      <DependentUpon>Exam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exam.aspx.designer.cs">
+      <DependentUpon>Exam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="feedback.aspx.cs">
       <DependentUpon>feedback.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="feedback.aspx.designer.cs">
       <DependentUpon>feedback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HTMLCSSExam.aspx.cs">
+      <DependentUpon>HTMLCSSExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HTMLCSSExam.aspx.designer.cs">
+      <DependentUpon>HTMLCSSExam.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -267,6 +303,20 @@
     </Compile>
     <Compile Include="index2.aspx.designer.cs">
       <DependentUpon>index2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JavaExam.aspx.cs">
+      <DependentUpon>JavaExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JavaExam.aspx.designer.cs">
+      <DependentUpon>JavaExam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JavaScriptExam.aspx.cs">
+      <DependentUpon>JavaScriptExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JavaScriptExam.aspx.designer.cs">
+      <DependentUpon>JavaScriptExam.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -346,6 +396,13 @@
       <DependentUpon>profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PythonExam.aspx.cs">
+      <DependentUpon>PythonExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PythonExam.aspx.designer.cs">
+      <DependentUpon>PythonExam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -366,6 +423,13 @@
     </Compile>
     <Compile Include="Student.Master.designer.cs">
       <DependentUpon>Student.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StudentDashboard.aspx.cs">
+      <DependentUpon>StudentDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentDashboard.aspx.designer.cs">
+      <DependentUpon>StudentDashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="videolesson.aspx.cs">
       <DependentUpon>videolesson.aspx</DependentUpon>
@@ -492,6 +556,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Public\" />
+    <Folder Include="Student\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

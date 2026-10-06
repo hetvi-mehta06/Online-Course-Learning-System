@@ -80,6 +80,10 @@
 
                 <ul class="navbar-nav ml-auto">
 
+                     <li class="nav-item">
+                        <a class="nav-link" href="StudentDashboard.aspx">Dashboard</a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="index2.aspx">Home</a>
                     </li>
@@ -107,6 +111,11 @@
                      <li class="nav-item">
                       <a class="nav-link" href="feedback.aspx">Feedback</a>
                       </li>
+
+                     <li class="nav-item">
+                    <a class="nav-link" href="exam.aspx">Exam</a>
+                    </li>
+
 
                      <li class="nav-item">
                      <a class="nav-link" href="Certificate.aspx">Certificate</a>

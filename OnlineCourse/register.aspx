@@ -177,7 +177,7 @@
         runat="server"
         AutoGenerateColumns="false"
         CssClass="table table-bordered table-hover"
-        Width="100%" OnSelectedIndexChanged="gvRegister_SelectedIndexChanged1">
+        Width="100%" OnSelectedIndexChanged="gvRegister_SelectedIndexChanged1" OnRowCommand="gvRegister_RowCommand">
 
             <Columns>
 
