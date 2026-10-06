@@ -1,16 +1,23 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Public.Master.cs" Inherits="OnlineCourse.Site1" %>
 
 <!DOCTYPE html>
-
-<!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head runat="server">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>LearnSphere</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
+        rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Existing CSS -->
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
@@ -18,223 +25,1081 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
     <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/style.css">
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+
+
+    <!-- =========================================================
+         PREMIUM PUBLIC MASTER CSS
+    ========================================================== -->
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #080b1f;
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .ls-navbar {
+            width: 100%;
+            min-height: 78px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(11, 15, 42, 0.97),
+                    rgba(24, 17, 61, 0.97)
+                );
+            border-bottom: 1px solid rgba(255,255,255,0.09);
+            box-shadow:
+                0 10px 40px rgba(0,0,0,0.35),
+                0 0 35px rgba(124,58,237,0.08);
+            position: relative;
+            z-index: 999;
+        }
+
+        .ls-navbar-inner {
+            width: 92%;
+            max-width: 1400px;
+            min-height: 78px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
+        .ls-logo {
+            text-decoration: none !important;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            color: #ffffff !important;
+            white-space: nowrap;
+            transition: 0.3s ease;
+        }
+
+        .ls-logo span {
+            background: linear-gradient(
+                135deg,
+                #a855f7,
+                #7c3aed,
+                #06b6d4
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ls-logo:hover {
+            text-decoration: none;
+            filter: drop-shadow(0 0 14px rgba(168,85,247,0.55));
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        .ls-nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .ls-nav li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ls-nav li a {
+            position: relative;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 44px;
+            padding: 0 17px;
+
+            color: #cbd5e1 !important;
+            text-decoration: none !important;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            border-radius: 13px;
+
+            transition:
+                color 0.3s ease,
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .ls-nav li a::before {
+            content: "";
+            position: absolute;
+
+            left: 16px;
+            right: 16px;
+            bottom: 5px;
+
+            height: 2px;
+
+            background: linear-gradient(
+                90deg,
+                #a855f7,
+                #06b6d4
+            );
+
+            border-radius: 20px;
+
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .ls-nav li a:hover {
+            color: #ffffff !important;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124,58,237,0.18),
+                    rgba(6,182,212,0.10)
+                );
+
+            box-shadow:
+                0 8px 25px rgba(124,58,237,0.15);
+        }
+
+        .ls-nav li a:hover::before {
+            transform: scaleX(1);
+        }
+
+
+        /* =====================================================
+           ACTIVE NAV
+        ===================================================== */
+
+        .ls-nav li.active a {
+            color: #ffffff !important;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124,58,237,0.28),
+                    rgba(6,182,212,0.12)
+                );
+
+            box-shadow:
+                inset 0 0 0 1px rgba(168,85,247,0.18),
+                0 8px 25px rgba(124,58,237,0.12);
+        }
+
+        .ls-nav li.active a::before {
+            transform: scaleX(1);
+        }
+
+
+        /* =====================================================
+           LOGIN BUTTON
+        ===================================================== */
+
+        .ls-login a {
+            margin-left: 8px;
+
+            color: #ffffff !important;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #6366f1
+                ) !important;
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            box-shadow:
+                0 8px 25px rgba(124,58,237,0.30);
+        }
+
+        .ls-login a:hover {
+            background:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #06b6d4
+                ) !important;
+
+            box-shadow:
+                0 10px 30px rgba(6,182,212,0.28);
+
+            color: #ffffff !important;
+        }
+
+        .ls-login a::before {
+            display: none;
+        }
+
+
+        /* =====================================================
+           REGISTER BUTTON
+        ===================================================== */
+
+        .ls-register a {
+            margin-left: 2px;
+
+            color: #ffffff !important;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(6,182,212,0.15),
+                    rgba(124,58,237,0.12)
+                ) !important;
+
+            border: 1px solid rgba(6,182,212,0.30);
+
+            box-shadow:
+                0 8px 25px rgba(6,182,212,0.08);
+        }
+
+        .ls-register a:hover {
+            color: #ffffff !important;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #06b6d4,
+                    #2563eb
+                ) !important;
+
+            border-color: transparent;
+
+            box-shadow:
+                0 10px 30px rgba(6,182,212,0.30);
+        }
+
+        .ls-register a::before {
+            display: none;
+        }
+
+
+        /* =====================================================
+           MOBILE MENU BUTTON
+        ===================================================== */
+
+        .ls-menu-btn {
+            display: none;
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            background:
+                rgba(255,255,255,0.06);
+
+            color: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 9px 13px;
+
+            cursor: pointer;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .ls-menu-btn i {
+            margin-right: 6px;
+            color: #06b6d4;
+        }
+
+
+        /* =====================================================
+           PAGE CONTENT AREA
+        ===================================================== */
+
+        .ls-main-content {
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 10% 15%,
+                    rgba(124,58,237,0.12),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(6,182,212,0.08),
+                    transparent 30%
+                ),
+                #080b1f;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .ls-footer {
+            position: relative;
+
+            padding: 70px 0 25px;
+
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(124,58,237,0.16),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 70%,
+                    rgba(6,182,212,0.10),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #090b20,
+                    #11102c
+                );
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+        }
+
+        .ls-footer::before {
+            content: "";
+            position: absolute;
+
+            width: 280px;
+            height: 280px;
+
+            top: -130px;
+            right: -80px;
+
+            background: rgba(124,58,237,0.12);
+
+            filter: blur(80px);
+            border-radius: 50%;
+        }
+
+        .ls-footer-container {
+            width: 92%;
+            max-width: 1400px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ls-footer-grid {
+            display: grid;
+            grid-template-columns:
+                1.5fr
+                1fr
+                1fr;
+
+            gap: 50px;
+        }
+
+
+        /* =====================================================
+           FOOTER BRAND
+        ===================================================== */
+
+        .ls-footer-title {
+            margin: 0 0 18px;
+
+            font-size: 23px;
+            font-weight: 700;
+
+            color: #ffffff;
+        }
+
+        .ls-footer-title span {
+            background: linear-gradient(
+                135deg,
+                #a855f7,
+                #06b6d4
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ls-footer-text {
+            max-width: 430px;
+
+            margin: 0;
+
+            color: #94a3b8;
+
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+
+        /* =====================================================
+           FOOTER HEADINGS
+        ===================================================== */
+
+        .ls-footer-heading {
+            margin: 0 0 20px;
+
+            color: #ffffff;
+
+            font-size: 17px;
+            font-weight: 700;
+
+            position: relative;
+            display: inline-block;
+        }
+
+        .ls-footer-heading::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 32px;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #a855f7,
+                    #06b6d4
+                );
+
+            border-radius: 20px;
+        }
+
+
+        /* =====================================================
+           FOOTER LINKS
+        ===================================================== */
+
+        .ls-footer-links {
+            list-style: none;
+
+            margin: 0;
+            padding: 0;
+        }
+
+        .ls-footer-links li {
+            margin-bottom: 11px;
+        }
+
+        .ls-footer-links a {
+            color: #94a3b8;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            transition:
+                color 0.3s ease,
+                padding-left 0.3s ease;
+        }
+
+        .ls-footer-links a:hover {
+            color: #ffffff;
+            padding-left: 7px;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .ls-contact-list {
+            list-style: none;
+
+            margin: 0;
+            padding: 0;
+        }
+
+        .ls-contact-list li {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 11px;
+
+            color: #94a3b8;
+
+            font-size: 14px;
+            line-height: 1.7;
+
+            margin-bottom: 14px;
+        }
+
+        .ls-contact-list i {
+            width: 25px;
+
+            color: #06b6d4;
+
+            font-size: 14px;
+
+            margin-top: 3px;
+        }
+
+
+        /* =====================================================
+           SOCIAL ICONS
+        ===================================================== */
+
+        .ls-social {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+        .ls-social a {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            color: #cbd5e1 !important;
+
+            text-decoration: none !important;
+
+            background:
+                rgba(255,255,255,0.055);
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            transition: 0.3s ease;
+        }
+
+        .ls-social a:hover {
+            color: #ffffff !important;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #06b6d4
+                );
+
+            border-color: transparent;
+
+            box-shadow:
+                0 8px 25px rgba(124,58,237,0.28);
+
+            transform: translateY(-4px);
+        }
+
+
+        /* =====================================================
+           FOOTER BOTTOM
+        ===================================================== */
+
+        .ls-footer-bottom {
+            margin-top: 55px;
+            padding-top: 22px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+
+            text-align: center;
+        }
+
+        .ls-footer-bottom p {
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+        .ls-footer-bottom span {
+            color: #a855f7;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .ls-nav li a {
+                padding: 0 11px;
+                font-size: 13px;
+            }
+
+            .ls-footer-grid {
+                gap: 30px;
+            }
+        }
+
+
+        @media (max-width: 900px) {
+
+            .ls-menu-btn {
+                display: block;
+            }
+
+            .ls-navbar-inner {
+                flex-wrap: wrap;
+                padding: 14px 0;
+            }
+
+            .ls-nav {
+                width: 100%;
+
+                display: none;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                margin-top: 15px;
+
+                padding: 10px;
+
+                border-radius: 18px;
+
+                background:
+                    rgba(15,23,42,0.96);
+
+                border:
+                    1px solid rgba(255,255,255,0.08);
+
+                box-shadow:
+                    0 15px 40px rgba(0,0,0,0.3);
+            }
+
+            .ls-nav.mobile-open {
+                display: flex;
+            }
+
+            .ls-nav li a {
+                width: 100%;
+
+                justify-content: flex-start;
+
+                padding: 13px 15px;
+            }
+
+            .ls-nav li a::before {
+                display: none;
+            }
+
+            .ls-login a,
+            .ls-register a {
+                margin: 3px 0;
+            }
+
+            .ls-footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .ls-logo {
+                font-size: 24px;
+            }
+
+            .ls-navbar {
+                min-height: 70px;
+            }
+
+            .ls-navbar-inner {
+                min-height: 70px;
+            }
+
+            .ls-footer {
+                padding-top: 50px;
+            }
+
+            .ls-footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .ls-footer-bottom {
+                margin-top: 35px;
+            }
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <form id="form1" runat="server">
-
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-            <div class="container">
-                <a class="navbar-brand" href="index.aspx">
-                    <span>Learn</span>Sphere
-                </a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#ftco-nav" aria-controls="ftco-nav"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="oi oi-menu"></span> Menu
-                </button>
-
-                <div class="collapse navbar-collapse" id="ftco-nav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a href="index.aspx" class="nav-link">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="about.aspx" class="nav-link">About</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="course.aspx" class="nav-link">Course</a>
-                        </li>
-
-                       <%-- <li class="nav-item">
-                            <a href="instructor.aspx" class="nav-link">Instructor</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="blog.aspx" class="nav-link">Blog</a>
-                        </li>--%>
-
-                        <li class="nav-item">
-                            <a href="contact.aspx" class="nav-link">Contact</a>
-
-                            
-                        <li class="nav-item">
-                            <a href="categories.aspx" class="nav-link">Categories</a>
-
-                            <li class="nav-item login-item">
-                            <asp:HyperLink
-                            ID="lnkLogin"
-                            runat="server"
-                            NavigateUrl="~/login.aspx"
-                            CssClass="nav-link"
-                            Text="Login">
-                        </asp:HyperLink>
-                    </li>
-
-                <li class="nav-item">
-                <asp:HyperLink
-                    ID="lnkRegister"
-                    runat="server"
-                    NavigateUrl="~/register.aspx"
-                    CssClass="nav-link"
-                    Text="Register">
-                </asp:HyperLink>
-            </li>
-
-                            
-                       <%-- <li class="nav-item">
-                            <a href="login.aspx" class="nav-link" style="margin-left:500px;">Login</a>
-
-                            
-                        <li class="nav-item">
-                            <a href="register.aspx" class="nav-link">Register</a>--%>
+<form id="form1" runat="server">
 
 
+    <!-- =========================================================
+         PREMIUM NAVBAR
+    ========================================================== -->
 
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <nav class="ls-navbar">
 
-     <%--   <!-- Hero -->
-        <div class="hero-wrap js-fullheight"
-            style="background-image:url('images/bg_1.jpg');">
+        <div class="ls-navbar-inner">
 
-            <div class="overlay"></div>
+            <!-- Logo -->
+            <a href="index.aspx" class="ls-logo">
+                <span>Learn</span>Sphere
+            </a>
 
-            <div class="container">
-                <div class="row no-gutters slider-text js-fullheight align-items-center">
 
-                    <div class="col-md-7 ftco-animate">
+            <!-- Mobile Button -->
+            <button type="button"
+                    class="ls-menu-btn"
+                    onclick="toggleLearnSphereMenu();">
 
-                        <span class="subheading">
-                            Welcome to LearnSphere
-                        </span>
+                <i class="fa fa-bars"></i>
+                Menu
 
-                        <h1 class="mb-4">
-                            We Are Online Platform For Make Learn
-                        </h1>
+            </button>
 
-                        <p class="caps">
-                            Learn anytime, anywhere with expert instructors.
-                        </p>
 
-                        <p>
-                            <a href="course.aspx" class="btn btn-primary">
-                                Our Course
-                            </a>
+            <!-- Navigation -->
+            <ul class="ls-nav" id="learnSphereNav">
 
-                            <a href="about.aspx" class="btn btn-white">
-                                Learn More
-                            </a>
-                        </p>
+                <li class="active">
+                    <a href="index.aspx">
+                        Home
+                    </a>
+                </li>
 
-                    </div>
-                </div>
-            </div>
-        </div>--%>
+                <li>
+                    <a href="about.aspx">
+                        About
+                    </a>
+                </li>
 
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <li>
+                    <a href="course.aspx">
+                        Course
+                    </a>
+                </li>
 
+                <li>
+                    <a href="contact.aspx">
+                        Contact
+                    </a>
+                </li>
+
+                <li>
+                    <a href="categories.aspx">
+                        Categories
+                    </a>
+                </li>
+
+
+                <!-- Login -->
+                <li class="ls-login">
+
+                    <asp:HyperLink
+                        ID="lnkLogin"
+                        runat="server"
+                        NavigateUrl="~/login.aspx"
+                        CssClass="nav-link"
+                        Text="Login">
+                    </asp:HyperLink>
+
+                </li>
+
+
+                <!-- Register -->
+                <li class="ls-register">
+
+                    <asp:HyperLink
+                        ID="lnkRegister"
+                        runat="server"
+                        NavigateUrl="~/register.aspx"
+                        CssClass="nav-link"
+                        Text="Register">
+                    </asp:HyperLink>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================================
+         PAGE CONTENT
+    ========================================================== -->
+
+    <main class="ls-main-content">
+
+        <asp:ContentPlaceHolder
+            ID="ContentPlaceHolder1"
+            runat="server">
         </asp:ContentPlaceHolder>
 
-                <!-- Footer -->
-        <footer class="ftco-footer ftco-no-pt">
-            <div class="container">
-                <div class="row mb-5">
+    </main>
 
-                    <div class="col-md pt-5">
-                        <div class="ftco-footer-widget pt-md-5 mb-4">
-                            <h2 class="ftco-heading-2">About</h2>
-                            <p>LearnSphere is an online learning platform where students can learn from quality courses anytime and anywhere.</p>
 
-                            <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
-                                <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-                                <li><a href="#"><span class="fa fa-instagram"></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
+    <!-- =========================================================
+         PREMIUM FOOTER
+    ========================================================== -->
 
-                    <div class="col-md pt-5">
-                        <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
-                            <h2 class="ftco-heading-2">Quick Links</h2>
+    <footer class="ls-footer">
 
-                            <ul class="list-unstyled">
-                                <li><a href="index.aspx" class="py-2 d-block">Home</a></li>
-                                <li><a href="about.aspx" class="py-2 d-block">About</a></li>
-                                <li><a href="course.aspx" class="py-2 d-block">Courses</a></li>
-                                <li><a href="contact.aspx" class="py-2 d-block">Contact</a></li>
-                            </ul>
+        <div class="ls-footer-container">
 
-                        </div>
-                    </div>
+            <div class="ls-footer-grid">
 
-                    <div class="col-md pt-5">
-                        <div class="ftco-footer-widget pt-md-5 mb-4">
 
-                            <h2 class="ftco-heading-2">Contact</h2>
+                <!-- About -->
+                <div>
 
-                            <ul class="list-unstyled">
-                                <li class="py-2">Email : info@learnsphere.com</li>
-                                <li class="py-2">Phone : +91 9876543210</li>
-                            </ul>
+                    <h2 class="ls-footer-title">
+                        <span>Learn</span>Sphere
+                    </h2>
 
-                        </div>
+                    <p class="ls-footer-text">
+                        LearnSphere is an online learning platform where
+                        students can learn from quality courses anytime
+                        and anywhere.
+                    </p>
+
+
+                    <div class="ls-social">
+
+                        <a href="#" aria-label="Twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+
                     </div>
 
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <p>
-                            Copyright &copy;
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                            LearnSphere. All Rights Reserved.
-                        </p>
-                    </div>
+
+                <!-- Quick Links -->
+                <div>
+
+                    <h3 class="ls-footer-heading">
+                        Quick Links
+                    </h3>
+
+                    <ul class="ls-footer-links">
+
+                        <li>
+                            <a href="index.aspx">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="about.aspx">
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="course.aspx">
+                                Courses
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="categories.aspx">
+                                Categories
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="contact.aspx">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Contact -->
+                <div>
+
+                    <h3 class="ls-footer-heading">
+                        Contact
+                    </h3>
+
+                    <ul class="ls-contact-list">
+
+                        <li>
+                            <i class="fa fa-envelope"></i>
+
+                            <span>
+                                info@learnsphere.com
+                            </span>
+                        </li>
+
+                        <li>
+                            <i class="fa fa-phone"></i>
+
+                            <span>
+                                +91 9876543210
+                            </span>
+                        </li>
+
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+
+                            <span>
+                                Ahmedabad, Gujarat, India
+                            </span>
+                        </li>
+
+                    </ul>
+
                 </div>
 
             </div>
-        </footer>
 
-    </form>
 
-    <!-- Loader -->
-    <div id="ftco-loader" class="show fullscreen">
-        <svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22"></circle>
-            <circle class="path" cx="24" cy="24" r="22"></circle>
-        </svg>
-    </div>
+            <!-- Bottom -->
+            <div class="ls-footer-bottom">
 
-    <!-- Scripts -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/scrollax.min.js"></script>
-    <script src="js/google-map.js"></script>
-    <script src="js/main.js"></script>
+                <p>
+                    Copyright &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+
+                    <span>LearnSphere</span>.
+                    All Rights Reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+</form>
+
+
+<!-- =========================================================
+     LOADER
+========================================================== -->
+
+<div id="ftco-loader" class="show fullscreen">
+
+    <svg class="circular" width="48px" height="48px">
+
+        <circle
+            class="path-bg"
+            cx="24"
+            cy="24"
+            r="22">
+        </circle>
+
+        <circle
+            class="path"
+            cx="24"
+            cy="24"
+            r="22">
+        </circle>
+
+    </svg>
+
+</div>
+
+
+<!-- =========================================================
+     EXISTING SCRIPTS
+========================================================== -->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="js/google-map.js"></script>
+<script src="js/main.js"></script>
+
+
+<!-- =========================================================
+     MOBILE MENU SCRIPT
+========================================================== -->
+
+<script>
+
+    function toggleLearnSphereMenu() {
+
+        var menu = document.getElementById("learnSphereNav");
+
+        if (menu.classList.contains("mobile-open")) {
+
+            menu.classList.remove("mobile-open");
+
+        } else {
+
+            menu.classList.add("mobile-open");
+
+        }
+
+    }
+
+</script>
+
 
 </body>
 </html>
