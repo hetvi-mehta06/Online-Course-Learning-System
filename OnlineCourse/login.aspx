@@ -26,11 +26,9 @@
 .login-hero {
     position: relative;
     min-height: 300px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     overflow: hidden;
     background-position: center !important;
     background-size: cover !important;
@@ -54,7 +52,6 @@
         );
 
     animation: heroLight 8s ease-in-out infinite alternate;
-
     pointer-events: none;
 }
 
@@ -68,18 +65,11 @@
     }
 }
 
-
-/* Hero content */
-
 .login-hero-content {
     position: relative;
     z-index: 20;
-
     padding: 30px 15px;
 }
-
-
-/* Breadcrumb */
 
 .login-hero .breadcrumbs {
     display: inline-flex;
@@ -108,9 +98,6 @@
     font-size: 13px !important;
     text-decoration: none !important;
 }
-
-
-/* Hero title */
 
 .login-hero-title {
     margin: 20px 0 0 !important;
@@ -246,11 +233,8 @@
 
 .login-orb {
     position: absolute;
-
     border-radius: 50%;
-
     pointer-events: none;
-
     z-index: 1;
 }
 
@@ -837,9 +821,6 @@
         0 10px 18px rgba(85,65,210,.20);
 }
 
-
-/* Button shine */
-
 .login-button-3d::before {
     content: "";
 
@@ -866,6 +847,58 @@
 
 .login-button-3d:hover::before {
     left: 140%;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.login-error-message {
+    display: block;
+
+    width: 100%;
+
+    margin: 14px 0 0 !important;
+
+    padding: 10px 14px !important;
+
+    text-align: center;
+
+    color: #d93025 !important;
+
+    background:
+        rgba(255,235,235,.85);
+
+    border:
+        1px solid rgba(217,48,37,.18);
+
+    border-radius: 10px;
+
+    font-size: 13px !important;
+
+    line-height: 1.5 !important;
+
+    font-weight: 700 !important;
+
+    box-shadow:
+        0 5px 15px rgba(217,48,37,.08);
+
+    animation:
+        loginErrorShow .25s ease;
+}
+
+@keyframes loginErrorShow {
+
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -975,22 +1008,18 @@
 
     .login-section-3d {
         min-height: auto;
-
         padding: 55px 15px 70px;
     }
 
     .login-card-3d {
         padding: 35px 22px 28px;
-
         border-radius: 25px;
     }
 
     .login-icon-3d {
         width: 75px;
         height: 75px;
-
         font-size: 29px;
-
         border-radius: 21px;
     }
 
@@ -1073,7 +1102,6 @@
              style="background-image: url('images/bg_2.jpg');">
 
         <div class="overlay"></div>
-
 
         <!-- Particles -->
 
@@ -1253,7 +1281,18 @@
                                 ID="btnLogin"
                                 runat="server"
                                 Text="Login"
-                                CssClass="btn btn-primary btn-block login-button-3d" />
+                                CssClass="btn btn-primary btn-block login-button-3d"
+                                OnClick="btnLogin_Click" />
+
+
+                            <!-- INVALID LOGIN MESSAGE -->
+
+                            <asp:Label
+                                ID="lblMessage"
+                                runat="server"
+                                Text=""
+                                CssClass="login-error-message">
+                            </asp:Label>
 
                         </div>
 

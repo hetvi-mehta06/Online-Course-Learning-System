@@ -32,32 +32,24 @@ namespace OnlineCourse
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtEmail.Text))
+            if (!(string.IsNullOrEmpty(txtEmail.Text)) && !(string.IsNullOrEmpty(txtPassword.Text)))
             {
-                txtEmail.Focus();
-            }
 
-            if (string.IsNullOrEmpty(txtPassword.Text))
-            {
-                txtPassword.Focus();
-            }
-        
+                cmd = new SqlCommand("select count(*) from Registration_tbl where [Email Address] = '" + txtEmail.Text + "' and Password = '" + txtPassword.Text + "'", con);
 
-        cmd = new SqlCommand("select count(*) from Registration_tbl where [Email Address] = '" + txtEmail.Text + "' and Password = '" + txtPassword.Text + "'", con);
+                int i = Convert.ToInt16(cmd.ExecuteScalar());
 
-            int i = Convert.ToInt16(cmd.ExecuteScalar());
+                if (i > 0)
+                {
+                    Session["student"] = txtEmail.Text;
 
-            if (i > 0)
-            {
-                Session["student"] = txtEmail.Text;
-
-                Response.Redirect("StudentDashboard.aspx");
-            }
-            else
-            {
-                Response.Write("<script>alert('Invalid username and password');</script>");
+                    Response.Redirect("StudentDashboard.aspx");
+                }
+                else
+                {
+                    Response.Write("Invalid username and password");
+                }
             }
         }
     }
 }
-        
