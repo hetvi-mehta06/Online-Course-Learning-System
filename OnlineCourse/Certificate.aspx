@@ -4,254 +4,902 @@
 
 <style>
 
-/* =========================================
-   CERTIFICATE 3D ANIMATION
-   Existing HTML/Content unchanged
-   ========================================= */
+/* =========================================================
+   LUXURY CERTIFICATE EXPERIENCE
+   ========================================================= */
 
-/* Certificate main card */
-.ftco-section .bg-white.shadow-lg {
+.lux-cert {
     position: relative;
-    transform-style: preserve-3d;
-    perspective: 1200px;
-    border-radius: 18px;
     overflow: hidden;
-
-    /* Smooth 3D entrance */
-    animation: certificateEnter 1.2s ease-out forwards,
-               certificateFloat 5s ease-in-out 1.2s infinite;
-
-    transition:
-        transform 0.5s ease,
-        box-shadow 0.5s ease,
-        border-color 0.5s ease;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 10% 15%, rgba(117,65,255,.18), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(0,210,255,.14), transparent 25%),
+        radial-gradient(circle at 50% 100%, rgba(174,89,255,.15), transparent 35%),
+        #080712;
 }
 
-/* 3D hover */
-.ftco-section .bg-white.shadow-lg:hover {
-    transform:
-        translateY(-12px)
-        rotateX(2deg)
-        rotateY(-2deg)
-        scale(1.015);
 
-    box-shadow:
-        0 35px 70px rgba(0,0,0,0.20),
-        0 15px 30px rgba(13,110,253,0.15);
+/* =========================================================
+   BACKGROUND LIGHT
+   ========================================================= */
+
+.lux-cert .ambient {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .20;
+    pointer-events: none;
 }
 
-/* Certificate glowing border */
-.ftco-section .bg-white.shadow-lg::before {
+.ambient.one {
+    background: #713cff;
+    left: -180px;
+    top: 300px;
+    animation: ambientMove1 9s ease-in-out infinite alternate;
+}
+
+.ambient.two {
+    background: #00cfff;
+    right: -180px;
+    top: 550px;
+    animation: ambientMove2 10s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.lux-hero {
+    position: relative;
+    height: 330px;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(10,5,30,.94),
+            rgba(43,17,86,.90),
+            rgba(0,62,90,.84)
+        ),
+        url('images/bg_2.jpg');
+
+    background-size: cover;
+    background-position: center;
+}
+
+.lux-hero::before {
     content: "";
     position: absolute;
     inset: 0;
 
-    border-radius: 18px;
+    background:
+        radial-gradient(circle at 50% 50%,
+        rgba(255,255,255,.12),
+        transparent 28%);
+}
+
+.lux-hero-content {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.lux-small-title {
+    color: #d7b85b;
+    font-size: 14px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    animation: heroSmall 1s ease-out both;
+}
+
+.lux-hero h1 {
+    margin: 12px 0 0;
+
+    color: white;
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 5px 0 rgba(0,0,0,.25),
+        0 15px 40px rgba(0,0,0,.55);
+
+    animation: heroEnter 1.2s cubic-bezier(.17,.67,.25,1) both;
+}
+
+
+/* =========================================================
+   CELEBRATION LAYER
+   ========================================================= */
+
+.fireworks {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+
+/* fireworks burst */
+.firework {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: fireworkBurst 2.2s ease-out forwards;
+}
+
+.firework.left {
+    left: 15%;
+    top: 38%;
+}
+
+.firework.right {
+    right: 15%;
+    top: 38%;
+}
+
+.firework.center {
+    left: 50%;
+    top: 18%;
+}
+
+
+/* particles */
+
+.firework span {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+
+    transform:
+        rotate(calc(var(--r) * 1deg))
+        translateY(-10px);
+
+    animation: fireParticle 1.9s ease-out forwards;
+}
+
+
+/* =========================================================
+   PARTICLE POSITIONS
+   ========================================================= */
+
+.firework span:nth-child(1)  { --r:0; }
+.firework span:nth-child(2)  { --r:30; }
+.firework span:nth-child(3)  { --r:60; }
+.firework span:nth-child(4)  { --r:90; }
+.firework span:nth-child(5)  { --r:120; }
+.firework span:nth-child(6)  { --r:150; }
+.firework span:nth-child(7)  { --r:180; }
+.firework span:nth-child(8)  { --r:210; }
+.firework span:nth-child(9)  { --r:240; }
+.firework span:nth-child(10) { --r:270; }
+.firework span:nth-child(11) { --r:300; }
+.firework span:nth-child(12) { --r:330; }
+
+
+/* =========================================================
+   GOLD DUST
+   ========================================================= */
+
+.gold-dust {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 3;
+}
+
+.gold-dust span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+
+    background: #f5d77a;
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px #f5d77a,
+        0 0 16px rgba(245,215,122,.7);
+
+    animation: dustFall 5s linear infinite;
+}
+
+.gold-dust span:nth-child(1) { left:5%;  animation-delay:.2s; }
+.gold-dust span:nth-child(2) { left:12%; animation-delay:1.1s; }
+.gold-dust span:nth-child(3) { left:20%; animation-delay:2s; }
+.gold-dust span:nth-child(4) { left:28%; animation-delay:.7s; }
+.gold-dust span:nth-child(5) { left:36%; animation-delay:1.7s; }
+.gold-dust span:nth-child(6) { left:45%; animation-delay:.4s; }
+.gold-dust span:nth-child(7) { left:55%; animation-delay:2.3s; }
+.gold-dust span:nth-child(8) { left:63%; animation-delay:1.3s; }
+.gold-dust span:nth-child(9) { left:72%; animation-delay:.8s; }
+.gold-dust span:nth-child(10){ left:80%; animation-delay:2.1s; }
+.gold-dust span:nth-child(11){ left:89%; animation-delay:.5s; }
+.gold-dust span:nth-child(12){ left:96%; animation-delay:1.8s; }
+
+
+/* =========================================================
+   CERTIFICATE AREA
+   ========================================================= */
+
+.lux-stage {
+    position: relative;
+    z-index: 5;
+    padding: 90px 15px 120px;
+    perspective: 1800px;
+}
+
+
+/* =========================================================
+   3D CARD
+   ========================================================= */
+
+.lux-certificate {
+
+    position: relative;
+
+    max-width: 1080px;
+    margin: auto;
+
+    padding: 70px 80px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffef9 0%,
+            #fffdf5 35%,
+            #f9f4e6 100%
+        );
+
+    box-shadow:
+        0 60px 120px rgba(0,0,0,.55),
+        0 25px 50px rgba(111,54,190,.22),
+        inset 0 0 0 1px rgba(255,255,255,.9);
+
+    transform-style: preserve-3d;
+
+    animation:
+        certificateReveal 1.5s cubic-bezier(.16,.8,.25,1) both,
+        certificateFloat 7s ease-in-out 1.6s infinite;
+
+    transition:
+        box-shadow .5s ease,
+        transform .5s ease;
+}
+
+
+/* luxury border */
+.lux-certificate::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -7px;
+
+    border-radius: 16px;
 
     background:
         linear-gradient(
             120deg,
-            transparent 20%,
-            rgba(255,255,255,0.65) 45%,
-            transparent 65%
+            #8c5cff,
+            #d6ad4c,
+            #fff1a8,
+            #00bfe8,
+            #8c5cff
         );
 
-    transform: translateX(-120%);
-    pointer-events: none;
+    background-size: 300% 300%;
 
-    animation: shineEffect 4s ease-in-out infinite;
+    z-index: -2;
+
+    animation: luxuryBorder 5s linear infinite;
 }
 
-/* Inner 3D layer */
-.ftco-section .bg-white.shadow-lg::after {
+
+/* black shadow frame */
+.lux-certificate::after {
+
     content: "";
-    position: absolute;
-    inset: 8px;
 
-    border-radius: 12px;
-    border: 1px solid rgba(13,110,253,0.12);
+    position: absolute;
+
+    inset: -15px;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 0 0 10px rgba(255,255,255,.015);
+
+    z-index: -3;
+}
+
+
+/* hover */
+
+.lux-certificate:hover {
+
+    transform:
+        rotateX(2deg)
+        rotateY(-2deg)
+        translateY(-12px)
+        scale(1.012);
+
+    box-shadow:
+        0 75px 140px rgba(0,0,0,.62),
+        0 30px 70px rgba(115,66,255,.28);
+}
+
+
+/* =========================================================
+   INNER GOLD FRAME
+   ========================================================= */
+
+.gold-frame {
+
+    position: absolute;
+    inset: 20px;
+
+    border: 2px solid #c7a449;
 
     pointer-events: none;
+
+    box-shadow:
+        inset 0 0 30px rgba(199,164,73,.10);
 }
 
-/* Certificate heading */
-.ftco-section h1.display-4 {
+
+/* second frame */
+
+.gold-frame::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 9px;
+
+    border: 1px solid rgba(199,164,73,.55);
+}
+
+
+/* =========================================================
+   ORNAMENTS
+   ========================================================= */
+
+.ornament {
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    z-index: 4;
+}
+
+.ornament::before,
+.ornament::after {
+
+    content: "";
+
+    position: absolute;
+
+    border-color: #c6a14b;
+}
+
+.ornament::before {
+    width: 65px;
+    height: 65px;
+}
+
+.ornament::after {
+    width: 30px;
+    height: 30px;
+}
+
+.ornament.tl {
+    top: 35px;
+    left: 35px;
+}
+
+.ornament.tr {
+    top: 35px;
+    right: 35px;
+    transform: rotate(90deg);
+}
+
+.ornament.bl {
+    bottom: 35px;
+    left: 35px;
+    transform: rotate(-90deg);
+}
+
+.ornament.br {
+    bottom: 35px;
+    right: 35px;
+    transform: rotate(180deg);
+}
+
+.ornament::before {
+    border-top: 3px solid;
+    border-left: 3px solid;
+    border-radius: 25px 0 0 0;
+}
+
+.ornament::after {
+    left: 12px;
+    top: 12px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+    border-radius: 15px 0 0 0;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.lux-content {
+
     position: relative;
-    display: inline-block;
+    z-index: 10;
+
+    text-align: center;
+
+    transform-style: preserve-3d;
+}
+
+
+/* academy */
+
+.lux-academy {
+
+    color: #6d4ab2;
+
+    font-size: 17px;
+    font-weight: 800;
+
+    letter-spacing: 7px;
+
+    text-transform: uppercase;
+
+    transform: translateZ(45px);
+
+    animation: contentUp 1s ease-out .4s both;
+}
+
+
+/* title */
+
+.lux-title {
+
+    margin: 12px 0 0;
+
+    font-size: 76px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4a2a89,
+            #a27724,
+            #d8ae4c,
+            #5b349e
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    transform: translateZ(70px);
 
     text-shadow:
-        0 2px 0 #ddd,
-        0 5px 10px rgba(0,0,0,0.15);
+        0 8px 20px rgba(90,55,150,.14);
 
-    animation: title3D 1s ease-out;
+    animation: titleLuxury 1.3s cubic-bezier(.15,.75,.25,1) .2s both;
 }
 
-/* Academy name */
-.ftco-section h5.text-primary {
-    animation: fadeSlideDown 0.8s ease-out;
+
+/* subtitle */
+
+.lux-subtitle {
+
+    margin-top: -5px;
+
+    font-size: 18px;
+
+    color: #82775f;
+
+    letter-spacing: 8px;
+
+    text-transform: uppercase;
+
+    transform: translateZ(45px);
+
+    animation: contentUp 1s ease-out .7s both;
 }
 
-/* Student name */
-.ftco-section h2.text-primary {
-    display: inline-block;
 
-    transition:
-        transform 0.4s ease,
-        text-shadow 0.4s ease;
+/* presented */
 
-    animation: nameAppear 1.2s ease-out;
+.lux-presented {
+
+    margin-top: 45px;
+
+    color: #777;
+
+    font-size: 16px;
+
+    transform: translateZ(40px);
+
+    animation: contentUp 1s ease-out .8s both;
 }
 
-.ftco-section h2.text-primary:hover {
-    transform:
-        translateY(-4px)
-        scale(1.05);
+
+/* student */
+
+.lux-student {
+
+    margin: 10px 0 18px;
+
+    font-size: 48px;
+
+    font-weight: 900;
+
+    color: #4d2b8e;
 
     text-shadow:
-        0 8px 18px rgba(13,110,253,0.30);
-}
+        0 5px 15px rgba(77,43,142,.22);
 
-/* Course title */
-.ftco-section h3.font-weight-bold {
-    transition:
-        transform 0.4s ease,
-        color 0.4s ease;
+    transform: translateZ(90px);
 
-    animation: courseAppear 1.3s ease-out;
-}
-
-.ftco-section h3.font-weight-bold:hover {
-    transform: translateY(-3px);
-    color: #0d6efd;
-}
-
-/* Horizontal lines */
-.ftco-section hr {
-    transition:
-        width 0.5s ease,
-        border-color 0.5s ease;
-}
-
-.ftco-section .bg-white.shadow-lg:hover hr {
-    border-color: #0d6efd !important;
-}
-
-/* Signature sections */
-.ftco-section .row.mt-5 .col-md-6 {
-    transition:
-        transform 0.4s ease,
-        box-shadow 0.4s ease;
-}
-
-.ftco-section .row.mt-5 .col-md-6:hover {
-    transform: translateY(-6px);
-}
-
-/* =========================================
-   BUTTON 3D EFFECT
-   ========================================= */
-
-.ftco-section .btn {
-    position: relative;
-
-    border-radius: 10px;
-
-    transform: translateY(0);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.3s ease;
-
-    box-shadow:
-        0 6px 0 rgba(0,0,0,0.15),
-        0 10px 20px rgba(0,0,0,0.10);
-}
-
-/* Button hover */
-.ftco-section .btn:hover {
-    transform:
-        translateY(-5px)
-        scale(1.04);
-
-    box-shadow:
-        0 10px 0 rgba(0,0,0,0.12),
-        0 18px 30px rgba(0,0,0,0.18);
-}
-
-/* Button click */
-.ftco-section .btn:active {
-    transform:
-        translateY(3px)
-        scale(0.98);
-
-    box-shadow:
-        0 2px 0 rgba(0,0,0,0.15),
-        0 5px 10px rgba(0,0,0,0.10);
-}
-
-/* Download button glow */
-.ftco-section .btn-primary {
-    animation: buttonGlow 3s ease-in-out infinite;
-}
-
-/* =========================================
-   HERO TITLE ANIMATION
-   ========================================= */
-
-.hero-wrap-2 .bread {
     animation:
-        heroTitle 1s ease-out,
-        heroFloat 4s ease-in-out 1s infinite;
+        studentLuxury 1.3s cubic-bezier(.15,.8,.25,1) .9s both;
+
+    transition:
+        transform .4s ease,
+        text-shadow .4s ease;
+}
+
+.lux-student:hover {
+
+    transform:
+        translateZ(105px)
+        scale(1.07);
 
     text-shadow:
-        0 4px 12px rgba(0,0,0,0.35);
-}
-
-/* Hero background slight zoom */
-.hero-wrap-2 {
-    background-size: cover;
-    background-position: center;
-
-    animation: backgroundZoom 12s ease-in-out infinite alternate;
-}
-
-/* Overlay smooth effect */
-.hero-wrap-2 .overlay {
-    transition: opacity 0.5s ease;
+        0 12px 35px rgba(77,43,142,.35);
 }
 
 
-/* =========================================
-   KEYFRAMES
-   ========================================= */
+/* course */
 
-@keyframes certificateEnter {
+.lux-course-label {
+
+    color: #777;
+
+    font-size: 16px;
+
+    transform: translateZ(40px);
+}
+
+.lux-course {
+
+    margin-top: 8px;
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    color: #25212e;
+
+    transform: translateZ(65px);
+
+    animation: contentUp 1s ease-out 1.15s both;
+}
+
+
+/* =========================================================
+   MEDALLION
+   ========================================================= */
+
+.medallion {
+
+    position: relative;
+
+    width: 125px;
+    height: 125px;
+
+    margin: 32px auto 20px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff3a8 0%,
+            #d7ad46 35%,
+            #9d7022 65%,
+            #5e4215 100%
+        );
+
+    border: 6px double #fff3a8;
+
+    box-shadow:
+        0 10px 30px rgba(110,77,20,.30),
+        inset 0 0 20px rgba(255,255,255,.45);
+
+    transform:
+        translateZ(80px)
+        rotateY(0deg);
+
+    animation:
+        medallionReveal 1.4s ease-out 1.2s both,
+        medalFloat 4s ease-in-out 2.6s infinite;
+}
+
+.medallion::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 10px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(255,255,255,.7);
+}
+
+.medallion i {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    color: white;
+
+    font-size: 38px;
+
+    text-shadow:
+        0 3px 8px rgba(0,0,0,.3);
+}
+
+.medallion span {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 17px;
+
+    transform: translateX(-50%);
+
+    color: white;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.lux-divider {
+
+    width: 240px;
+    height: 3px;
+
+    margin: 28px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #c49a39,
+            #f6dc87,
+            #c49a39,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px rgba(196,154,57,.35);
+
+    animation: dividerReveal 1s ease-out 1.2s both;
+}
+
+
+/* =========================================================
+   DETAILS
+   ========================================================= */
+
+.lux-details {
+
+    margin-top: 25px;
+
+    color: #5e5a51;
+
+    font-size: 15px;
+
+    transform: translateZ(45px);
+
+    animation: contentUp 1s ease-out 1.35s both;
+}
+
+.lux-details p {
+    margin: 7px 0;
+}
+
+.lux-details strong {
+    color: #302a21;
+}
+
+
+/* =========================================================
+   SIGNATURE
+   ========================================================= */
+
+.lux-signatures {
+
+    margin-top: 45px;
+
+    transform: translateZ(45px);
+}
+
+.signature-line {
+
+    width: 190px;
+
+    margin: auto auto 10px;
+
+    border-top: 2px solid #4b463e;
+}
+
+.signature-title {
+
+    color: #777;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.lux-buttons {
+
+    margin-top: 45px;
+
+    transform: translateZ(65px);
+
+    animation: contentUp 1s ease-out 1.5s both;
+}
+
+.lux-btn {
+
+    display: inline-block;
+
+    padding: 15px 28px;
+
+    margin: 5px;
+
+    border-radius: 50px;
+
+    font-weight: 800;
+
+    text-decoration: none !important;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.lux-btn:hover {
+
+    transform:
+        translateY(-7px)
+        translateZ(20px)
+        scale(1.05);
+}
+
+.download-btn {
+
+    color: white !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6941c6,
+            #3d79e8
+        );
+
+    box-shadow:
+        0 12px 30px rgba(74,62,190,.35);
+}
+
+.back-btn {
+
+    color: white !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0ca678,
+            #087f5b
+        );
+
+    box-shadow:
+        0 12px 30px rgba(12,166,120,.30);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes certificateReveal {
 
     0% {
         opacity: 0;
+
         transform:
-            perspective(1200px)
-            rotateX(15deg)
-            rotateY(-12deg)
-            translateY(80px)
-            scale(0.92);
+            perspective(1800px)
+            rotateX(35deg)
+            rotateY(-25deg)
+            translateY(150px)
+            scale(.72);
     }
 
-    60% {
+    55% {
         opacity: 1;
+
         transform:
-            perspective(1200px)
-            rotateX(-3deg)
-            rotateY(3deg)
-            translateY(-8px)
-            scale(1.01);
+            perspective(1800px)
+            rotateX(-5deg)
+            rotateY(5deg)
+            translateY(-15px)
+            scale(1.025);
     }
 
     100% {
+
         opacity: 1;
+
         transform:
-            perspective(1200px)
+            perspective(1800px)
             rotateX(0)
             rotateY(0)
             translateY(0)
@@ -262,61 +910,63 @@
 
 @keyframes certificateFloat {
 
-    0%, 100% {
+    0%,100% {
+
         transform:
-            perspective(1200px)
-            rotateX(0deg)
-            rotateY(0deg)
+            perspective(1800px)
+            rotateX(0)
+            rotateY(0)
             translateY(0);
     }
 
     50% {
+
         transform:
-            perspective(1200px)
+            perspective(1800px)
             rotateX(1deg)
             rotateY(-1deg)
-            translateY(-7px);
+            translateY(-9px);
     }
 }
 
 
-@keyframes shineEffect {
+@keyframes luxuryBorder {
 
     0% {
-        transform: translateX(-120%);
+        background-position: 0% 50%;
     }
 
-    45% {
-        transform: translateX(120%);
+    50% {
+        background-position: 100% 50%;
     }
 
     100% {
-        transform: translateX(120%);
+        background-position: 0% 50%;
     }
 }
 
 
-@keyframes title3D {
+@keyframes heroEnter {
 
     0% {
         opacity: 0;
         transform:
-            perspective(500px)
-            rotateX(70deg)
-            translateY(40px);
+            perspective(700px)
+            rotateX(60deg)
+            translateY(70px);
     }
 
     100% {
         opacity: 1;
         transform:
-            perspective(500px)
-            rotateX(0deg)
+            perspective(700px)
+            rotateX(0)
             translateY(0);
     }
 }
 
 
-@keyframes fadeSlideDown {
+@keyframes heroSmall {
 
     0% {
         opacity: 0;
@@ -330,143 +980,299 @@
 }
 
 
-@keyframes nameAppear {
+@keyframes contentUp {
 
     0% {
         opacity: 0;
         transform:
-            translateZ(-80px)
-            scale(0.8);
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translateZ(0)
-            scale(1);
-    }
-}
-
-
-@keyframes courseAppear {
-
-    0% {
-        opacity: 0;
-        transform:
-            translateY(30px)
-            rotateX(20deg);
+            translateY(35px)
+            translateZ(0);
     }
 
     100% {
         opacity: 1;
         transform:
             translateY(0)
-            rotateX(0);
+            translateZ(45px);
     }
 }
 
 
-@keyframes buttonGlow {
-
-    0%, 100% {
-        box-shadow:
-            0 6px 0 rgba(0,0,0,0.15),
-            0 10px 20px rgba(13,110,253,0.10);
-    }
-
-    50% {
-        box-shadow:
-            0 6px 0 rgba(0,0,0,0.15),
-            0 15px 30px rgba(13,110,253,0.30);
-    }
-}
-
-
-@keyframes heroTitle {
+@keyframes titleLuxury {
 
     0% {
         opacity: 0;
+
         transform:
-            perspective(500px)
+            perspective(700px)
+            rotateX(75deg)
             translateZ(-100px)
-            rotateX(30deg);
+            translateY(50px)
+            scale(.75);
     }
 
     100% {
         opacity: 1;
+
         transform:
-            perspective(500px)
-            translateZ(0)
-            rotateX(0);
+            perspective(700px)
+            rotateX(0)
+            translateZ(70px)
+            translateY(0)
+            scale(1);
     }
 }
 
 
-@keyframes heroFloat {
-
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-
-@keyframes backgroundZoom {
+@keyframes studentLuxury {
 
     0% {
-        background-size: 100%;
+        opacity: 0;
+
+        transform:
+            translateZ(-100px)
+            rotateX(30deg)
+            scale(.55);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translateZ(105px)
+            rotateX(-3deg)
+            scale(1.08);
     }
 
     100% {
-        background-size: 108%;
+        opacity: 1;
+
+        transform:
+            translateZ(90px)
+            rotateX(0)
+            scale(1);
     }
 }
 
 
-/* =========================================
-   MOBILE RESPONSIVE
-   ========================================= */
+@keyframes medallionReveal {
 
-@media (max-width: 768px) {
+    0% {
+        opacity: 0;
 
-    .ftco-section .bg-white.shadow-lg {
-        animation:
-            certificateEnter 1s ease-out forwards,
-            certificateFloat 6s ease-in-out 1s infinite;
+        transform:
+            translateZ(-100px)
+            rotateY(180deg)
+            scale(.4);
     }
 
-    .ftco-section .bg-white.shadow-lg:hover {
-        transform: translateY(-5px) scale(1.005);
-    }
+    100% {
+        opacity: 1;
 
-    .ftco-section .btn {
-        margin-bottom: 12px;
+        transform:
+            translateZ(80px)
+            rotateY(0)
+            scale(1);
     }
-
 }
 
 
-/* =========================================
-   REDUCED MOTION
-   ========================================= */
+@keyframes medalFloat {
 
-@media (prefers-reduced-motion: reduce) {
+    0%,100% {
+        transform:
+            translateZ(80px)
+            translateY(0)
+            rotateY(0);
+    }
 
-    .ftco-section .bg-white.shadow-lg,
-    .ftco-section h1.display-4,
-    .ftco-section h5.text-primary,
-    .ftco-section h2.text-primary,
-    .ftco-section h3.font-weight-bold,
-    .ftco-section .btn-primary,
-    .hero-wrap-2 .bread,
-    .hero-wrap-2 {
+    50% {
+        transform:
+            translateZ(90px)
+            translateY(-7px)
+            rotateY(8deg);
+    }
+}
+
+
+@keyframes dividerReveal {
+
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+
+    100% {
+        width: 240px;
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   FIREWORKS
+   ========================================================= */
+
+@keyframes fireParticle {
+
+    0% {
+        opacity: 1;
+        transform:
+            rotate(calc(var(--r) * 1deg))
+            translateY(0)
+            scale(.3);
+    }
+
+    60% {
+        opacity: 1;
+        transform:
+            rotate(calc(var(--r) * 1deg))
+            translateY(-115px)
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            rotate(calc(var(--r) * 1deg))
+            translateY(-175px)
+            scale(.05);
+    }
+}
+
+
+@keyframes fireworkBurst {
+
+    0% {
+        transform: scale(.2);
+    }
+
+    20% {
+        transform: scale(1.4);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   GOLD DUST
+   ========================================================= */
+
+@keyframes dustFall {
+
+    0% {
+        top: -10px;
+        opacity: 0;
+        transform: rotate(0);
+    }
+
+    15% {
+        opacity: .9;
+    }
+
+    100% {
+        top: 105%;
+        opacity: 0;
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   AMBIENT
+   ========================================================= */
+
+@keyframes ambientMove1 {
+
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(160px,100px);
+    }
+}
+
+
+@keyframes ambientMove2 {
+
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(-140px,-80px);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:768px) {
+
+    .lux-hero {
+        height: 270px;
+    }
+
+    .lux-hero h1 {
+        font-size: 38px;
+    }
+
+    .lux-stage {
+        padding: 55px 12px 80px;
+    }
+
+    .lux-certificate {
+        padding: 55px 25px;
+    }
+
+    .lux-title {
+        font-size: 48px;
+    }
+
+    .lux-subtitle {
+        font-size: 13px;
+        letter-spacing: 4px;
+    }
+
+    .lux-student {
+        font-size: 32px;
+    }
+
+    .lux-course {
+        font-size: 24px;
+    }
+
+    .gold-frame {
+        inset: 12px;
+    }
+
+    .ornament {
+        transform: scale(.65);
+    }
+
+    .lux-buttons .lux-btn {
+        display: block;
+        margin: 10px auto;
+        max-width: 270px;
+    }
+}
+
+
+@media(prefers-reduced-motion:reduce) {
+
+    .lux-cert *,
+    .lux-cert *::before,
+    .lux-cert *::after {
+
         animation: none !important;
         transition: none !important;
     }
-
 }
 
 </style>
@@ -476,119 +1282,290 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<section class="hero-wrap hero-wrap-2" style="background-image:url('images/bg_2.jpg');">
+<div class="lux-cert">
 
-    <div class="overlay"></div>
+    <!-- Ambient background -->
+    <div class="ambient one"></div>
+    <div class="ambient two"></div>
 
-    <div class="container">
 
-        <div class="row no-gutters slider-text align-items-end justify-content-center">
+    <!-- =====================================================
+         FIREWORK CELEBRATION
+         ===================================================== -->
 
-            <div class="col-md-9 text-center pb-5">
+    <div class="fireworks">
 
-                <h1 class="bread">Course Certificate</h1>
+        <div class="firework left">
 
-            </div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div class="firework right">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div class="firework center">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
 
         </div>
 
     </div>
 
-</section>
 
+    <!-- Gold particles -->
 
-<section class="ftco-section">
+    <div class="gold-dust">
 
-<div class="container">
-
-<div class="row justify-content-center">
-
-<div class="col-lg-10">
-
-<div class="bg-white shadow-lg p-5 text-center" style="border:8px solid #0d6efd;">
-
-<h5 class="text-uppercase text-primary">
-LearnSphere Academy
-</h5>
-
-<h1 class="display-4 font-weight-bold mt-3">
-Certificate
-</h1>
-
-<h5 class="mb-4">
-of Completion
-</h5>
-
-<p class="mt-4">
-This Certificate is proudly presented to
-</p>
-
-<h2 class="text-primary font-weight-bold">
-Vaibhavi Raiyani
-</h2>
-
-<p class="mt-4">
-For Successfully Completing the Course
-</p>
-
-<h3 class="font-weight-bold">
-ASP.NET Web Forms
-</h3>
-
-<hr>
-
-<p class="mt-4">
-<strong>Instructor :</strong> Tony Garret
-</p>
-
-<p>
-<strong>Completion Date :</strong> 25 July 2026
-</p>
-
-<p>
-<strong>Certificate ID :</strong> LS20260001
-</p>
-
-<div class="row mt-5">
-
-    <div class="col-md-6 text-center">
-
-        <hr style="width:200px;border:1px solid #000;" />
-
-        <h5>Instructor Signature</h5>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
 
     </div>
 
-    <div class="col-md-6 text-center">
 
-        <hr style="width:200px;border:1px solid #000;" />
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
 
-        <h5>Director Signature</h5>
+    <section class="lux-hero">
 
-    </div>
+        <div class="lux-hero-content">
+
+            <div class="lux-small-title">
+                LearnSphere Academy
+            </div>
+
+            <h1>
+                Course Certificate
+            </h1>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CERTIFICATE
+         ===================================================== -->
+
+    <section class="lux-stage">
+
+        <div class="container">
+
+            <div class="lux-certificate">
+
+
+                <!-- Frames -->
+
+                <div class="gold-frame"></div>
+
+
+                <!-- Corner ornaments -->
+
+                <div class="ornament tl"></div>
+                <div class="ornament tr"></div>
+                <div class="ornament bl"></div>
+                <div class="ornament br"></div>
+
+
+                <div class="lux-content">
+
+
+                    <!-- Academy -->
+
+                    <div class="lux-academy">
+                        LearnSphere Academy
+                    </div>
+
+
+                    <!-- Title -->
+
+                    <div class="lux-title">
+                        Certificate
+                    </div>
+
+
+                    <div class="lux-subtitle">
+                        of Completion
+                    </div>
+
+
+                    <!-- Presented -->
+
+                    <div class="lux-presented">
+                        This Certificate is proudly presented to
+                    </div>
+
+
+                    <!-- Student -->
+
+                    <div class="lux-student">
+                        Vaibhavi Raiyani
+                    </div>
+
+
+                    <!-- Course -->
+
+                    <div class="lux-course-label">
+                        For Successfully Completing the Course
+                    </div>
+
+
+                    <div class="lux-course">
+                        ASP.NET Web Forms
+                    </div>
+
+
+                    <!-- Gold divider -->
+
+                    <div class="lux-divider"></div>
+
+
+                    <!-- Medal -->
+
+                    <div class="medallion">
+
+                        <i class="fa fa-trophy"></i>
+
+                        <span>
+                            VERIFIED
+                        </span>
+
+                    </div>
+
+
+                    <!-- Details -->
+
+                    <div class="lux-details">
+
+                        <p>
+                            <strong>Instructor :</strong>
+                            Tony Garret
+                        </p>
+
+                        <p>
+                            <strong>Completion Date :</strong>
+                            25 July 2026
+                        </p>
+
+                        <p>
+                            <strong>Certificate ID :</strong>
+                            LS20260001
+                        </p>
+
+                    </div>
+
+
+                    <!-- Signatures -->
+
+                    <div class="row lux-signatures">
+
+                        <div class="col-md-6">
+
+                            <div class="signature-line"></div>
+
+                            <div class="signature-title">
+                                Instructor Signature
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="signature-line"></div>
+
+                            <div class="signature-title">
+                                Director Signature
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+
+                    <div class="lux-buttons">
+
+                        <a href="#"
+                           class="lux-btn download-btn">
+
+                            <i class="fa fa-download"></i>
+
+                            &nbsp; Download PDF
+
+                        </a>
+
+
+                        <a href="MyCourses.aspx"
+                           class="lux-btn back-btn">
+
+                            <i class="fa fa-arrow-left"></i>
+
+                            &nbsp; Back to My Courses
+
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </div>
-
-<div class="mt-5">
-
-    <a href="#" class="btn btn-primary btn-lg mr-3">
-        <i class="fa fa-download"></i> Download PDF
-    </a>
-
-    <a href="MyCourses.aspx" class="btn btn-success btn-lg">
-        Back to My Courses
-    </a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
 
 </asp:Content>
