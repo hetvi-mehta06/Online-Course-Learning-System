@@ -2,1360 +2,1539 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-<style>
+    <style>
 
-    /* =========================================
-       MAIN PAGE
-    ========================================= */
+        /* =========================================================
+           MANAGE VIDEOS - PREMIUM DARK BLUE THEME
+        ========================================================= */
 
-    .manage-videos-page {
-        min-height: 100vh;
-        padding-top: 100px;
-        padding-bottom: 80px;
-        position: relative;
-        overflow: hidden;
+        .video-page {
+            position: relative;
+            min-height: 700px;
+            padding: 55px 0 70px;
+            overflow: hidden;
 
-        background:
-            radial-gradient(circle at 10% 15%, rgba(124, 58, 237, .22), transparent 30%),
-            radial-gradient(circle at 90% 20%, rgba(37, 99, 235, .20), transparent 30%),
-            radial-gradient(circle at 50% 90%, rgba(168, 85, 247, .14), transparent 35%),
-            #080b1c;
-    }
-
-    /* =========================================
-       BACKGROUND ORBS
-    ========================================= */
-
-    .video-orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        opacity: .35;
-        pointer-events: none;
-
-        animation: videoFloat 9s ease-in-out infinite alternate;
-    }
-
-    .video-orb.one {
-        width: 260px;
-        height: 260px;
-        background: #7c3aed;
-
-        top: 120px;
-        left: -110px;
-    }
-
-    .video-orb.two {
-        width: 300px;
-        height: 300px;
-        background: #2563eb;
-
-        top: 330px;
-        right: -120px;
-
-        animation-delay: 2s;
-    }
-
-    .video-orb.three {
-        width: 230px;
-        height: 230px;
-        background: #9333ea;
-
-        bottom: 40px;
-        left: 42%;
-
-        animation-delay: 4s;
-    }
-
-    @keyframes videoFloat {
-
-        from {
-            transform: translate3d(0, 0, 0) scale(1);
+            background:
+                radial-gradient(circle at 8% 10%, rgba(124,58,237,.18), transparent 28%),
+                radial-gradient(circle at 92% 15%, rgba(6,182,212,.13), transparent 28%),
+                radial-gradient(circle at 50% 100%, rgba(79,70,229,.13), transparent 35%),
+                #050816;
         }
 
-        to {
-            transform: translate3d(30px, -35px, 0) scale(1.12);
+        .video-page::before {
+            content: "";
+            position: absolute;
+            width: 430px;
+            height: 430px;
+            left: -180px;
+            top: 80px;
+            border-radius: 50%;
+            background: rgba(124,58,237,.10);
+            filter: blur(85px);
+            pointer-events: none;
         }
 
-    }
-
-    /* =========================================
-       HERO
-    ========================================= */
-
-    .videos-hero {
-        position: relative;
-        z-index: 2;
-
-        max-width: 1250px;
-        margin: 0 auto 35px;
-
-        padding: 45px 35px;
-
-        text-align: center;
-
-        border-radius: 28px;
-
-        background: rgba(17, 24, 50, .72);
-
-        border: 1px solid rgba(139, 92, 246, .30);
-
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-
-        box-shadow:
-            0 25px 70px rgba(0, 0, 0, .45),
-            inset 0 1px 0 rgba(255, 255, 255, .08);
-
-        overflow: hidden;
-    }
-
-    .videos-hero::before {
-        content: "";
-
-        position: absolute;
-        inset: 0;
-
-        background:
-            linear-gradient(
-                120deg,
-                transparent 20%,
-                rgba(139, 92, 246, .12),
-                transparent 80%
-            );
-
-        pointer-events: none;
-    }
-
-    .videos-hero h1 {
-        position: relative;
-        z-index: 1;
-
-        margin: 0;
-
-        font-size: 44px;
-        font-weight: 800;
-        letter-spacing: -.8px;
-
-        background:
-            linear-gradient(
-                90deg,
-                #ffffff,
-                #c4b5fd,
-                #60a5fa
-            );
-
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .videos-hero p {
-        position: relative;
-        z-index: 1;
-
-        margin: 12px 0 0;
-
-        color: #aeb9d6;
-
-        font-size: 16px;
-    }
-
-    /* =========================================
-       MAIN CONTAINER
-    ========================================= */
-
-    .videos-container {
-        position: relative;
-        z-index: 2;
-
-        max-width: 1250px;
-        margin: auto;
-    }
-
-    /* =========================================
-       GLASS PANEL
-    ========================================= */
-
-    .videos-panel {
-        position: relative;
-
-        padding: 30px;
-
-        border-radius: 26px;
-
-        background: rgba(17, 24, 50, .72);
-
-        border: 1px solid rgba(139, 92, 246, .25);
-
-        backdrop-filter: blur(22px);
-        -webkit-backdrop-filter: blur(22px);
-
-        box-shadow:
-            0 25px 65px rgba(0, 0, 0, .40),
-            inset 0 1px 0 rgba(255, 255, 255, .06);
-
-        overflow: hidden;
-    }
-
-    .videos-panel::before {
-        content: "";
-
-        position: absolute;
-        top: 0;
-        left: 10%;
-        right: 10%;
-
-        height: 1px;
-
-        background:
-            linear-gradient(
-                90deg,
-                transparent,
-                rgba(139, 92, 246, .8),
-                rgba(59, 130, 246, .8),
-                transparent
-            );
-    }
-
-    /* =========================================
-       HEADER
-    ========================================= */
-
-    .videos-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        gap: 20px;
-
-        margin-bottom: 25px;
-    }
-
-    .videos-title {
-        margin: 0;
-
-        color: #ffffff;
-
-        font-size: 27px;
-        font-weight: 750;
-    }
-
-    .videos-subtitle {
-        margin: 5px 0 0;
-
-        color: #8f9bb8;
-
-        font-size: 14px;
-    }
-
-    /* =========================================
-       ADD VIDEO BUTTON
-    ========================================= */
-
-    .add-video-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-
-        padding: 12px 22px;
-
-        border-radius: 12px;
-
-        color: #ffffff !important;
-        text-decoration: none !important;
-
-        font-weight: 700;
-
-        background:
-            linear-gradient(
-                135deg,
-                #7c3aed,
-                #2563eb
-            );
-
-        border: 1px solid rgba(255, 255, 255, .10);
-
-        box-shadow:
-            0 10px 25px rgba(37, 99, 235, .25);
-
-        transition: all .3s ease;
-    }
-
-    .add-video-btn:hover {
-        transform: translateY(-4px);
-
-        color: #ffffff !important;
-
-        box-shadow:
-            0 18px 35px rgba(124, 58, 237, .35);
-    }
-
-    /* =========================================
-       TABLE WRAPPER
-    ========================================= */
-
-    .videos-table-wrapper {
-        width: 100%;
-
-        overflow-x: auto;
-
-        border-radius: 18px;
-
-        border: 1px solid rgba(139, 92, 246, .18);
-    }
-
-    /* =========================================
-       VIDEO TABLE
-    ========================================= */
-
-    .videos-table {
-        width: 100%;
-        min-width: 950px;
-
-        margin: 0;
-
-        border-collapse: separate;
-        border-spacing: 0;
-
-        color: #dbe4ff;
-
-        background: rgba(7, 12, 30, .55);
-    }
-
-    .videos-table thead th {
-        padding: 17px 15px;
-
-        color: #ffffff;
-
-        font-size: 13px;
-        font-weight: 700;
-
-        text-transform: uppercase;
-        letter-spacing: .6px;
-
-        border: none !important;
-
-        background:
-            linear-gradient(
-                135deg,
-                rgba(124, 58, 237, .88),
-                rgba(37, 99, 235, .88)
-            );
-    }
-
-    .videos-table tbody td {
-        padding: 17px 15px;
-
-        vertical-align: middle;
-
-        color: #cbd5f5;
-
-        border-top:
-            1px solid rgba(148, 163, 184, .10);
-
-        background:
-            rgba(15, 23, 42, .55);
-    }
-
-    .videos-table tbody tr {
-        transition: all .3s ease;
-    }
-
-    .videos-table tbody tr:hover {
-        transform: scale(1.003);
-    }
-
-    .videos-table tbody tr:hover td {
-        color: #ffffff;
-
-        background:
-            rgba(30, 41, 70, .72);
-
-        box-shadow:
-            inset 4px 0 0 #8b5cf6;
-    }
-
-    /* =========================================
-       STATUS BADGES
-    ========================================= */
-
-    .video-status {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-
-        min-width: 85px;
-
-        padding: 7px 12px;
-
-        border-radius: 20px;
-
-        font-size: 12px;
-        font-weight: 700;
-    }
-
-    .published-status {
-        color: #a7f3d0;
-
-        background:
-            rgba(16, 185, 129, .15);
-
-        border:
-            1px solid rgba(16, 185, 129, .35);
-    }
-
-    .draft-status {
-        color: #fde68a;
-
-        background:
-            rgba(245, 158, 11, .15);
-
-        border:
-            1px solid rgba(245, 158, 11, .35);
-    }
-
-    /* =========================================
-       ACTION BUTTONS
-    ========================================= */
-
-    .video-action {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-
-        min-width: 60px;
-
-        padding: 8px 12px;
-
-        margin: 2px;
-
-        border-radius: 9px;
-
-        color: #ffffff !important;
-
-        text-decoration: none !important;
-
-        font-size: 12px;
-        font-weight: 700;
-
-        transition: all .25s ease;
-    }
-
-    .edit-video {
-        background:
-            linear-gradient(
-                135deg,
-                #2563eb,
-                #3b82f6
-            );
-
-        box-shadow:
-            0 7px 18px rgba(37, 99, 235, .20);
-    }
-
-    .delete-video {
-        background:
-            linear-gradient(
-                135deg,
-                #dc2626,
-                #ef4444
-            );
-
-        box-shadow:
-            0 7px 18px rgba(220, 38, 38, .20);
-    }
-
-    .video-action:hover {
-        transform: translateY(-3px) scale(1.03);
-
-        color: #ffffff !important;
-    }
-
-    /* =========================================
-       BOTTOM CARDS
-    ========================================= */
-
-    .bottom-section {
-        margin-top: 30px;
-    }
-
-    .video-info-card {
-        height: 100%;
-
-        padding: 28px;
-
-        border-radius: 23px;
-
-        background: rgba(17, 24, 50, .72);
-
-        border: 1px solid rgba(139, 92, 246, .22);
-
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-
-        box-shadow:
-            0 20px 55px rgba(0, 0, 0, .35),
-            inset 0 1px 0 rgba(255, 255, 255, .05);
-
-        transition: all .35s ease;
-    }
-
-    .video-info-card:hover {
-        transform: translateY(-7px);
-
-        border-color:
-            rgba(139, 92, 246, .45);
-
-        box-shadow:
-            0 28px 65px rgba(0, 0, 0, .45),
-            0 0 35px rgba(124, 58, 237, .10);
-    }
-
-    .video-info-card h3 {
-        margin-bottom: 22px;
-
-        color: #ffffff;
-
-        font-size: 23px;
-        font-weight: 750;
-    }
-
-    /* =========================================
-       STATISTICS
-    ========================================= */
-
-    .video-stat {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        padding: 13px 0;
-
-        color: #aeb9d6;
-
-        border-bottom:
-            1px solid rgba(148, 163, 184, .10);
-    }
-
-    .video-stat:last-of-type {
-        border-bottom: none;
-    }
-
-    .video-stat strong {
-        color: #ffffff;
-    }
-
-    .stat-number {
-        color: #a78bfa !important;
-
-        font-size: 17px;
-
-        font-weight: 800;
-    }
-
-    /* =========================================
-       VIEW ALL BUTTON
-    ========================================= */
-
-    .view-videos-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        width: 100%;
-
-        margin-top: 20px;
-
-        padding: 12px;
-
-        border-radius: 11px;
-
-        color: #ffffff !important;
-
-        text-decoration: none !important;
-
-        font-weight: 700;
-
-        background:
-            linear-gradient(
-                135deg,
-                #7c3aed,
-                #2563eb
-            );
-
-        transition: all .3s ease;
-    }
-
-    .view-videos-btn:hover {
-        transform: translateY(-3px);
-
-        color: #ffffff !important;
-
-        box-shadow:
-            0 12px 28px rgba(124, 58, 237, .25);
-    }
-
-    /* =========================================
-       QUICK ACTIONS
-    ========================================= */
-
-    .quick-action {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        width: 100%;
-
-        min-height: 48px;
-
-        margin-bottom: 13px;
-
-        padding: 12px;
-
-        border-radius: 11px;
-
-        color: #ffffff !important;
-
-        text-decoration: none !important;
-
-        font-weight: 700;
-
-        border: 1px solid rgba(255, 255, 255, .08);
-
-        transition: all .3s ease;
-    }
-
-    .quick-action:hover {
-        transform: translateX(5px) translateY(-2px);
-
-        color: #ffffff !important;
-
-        box-shadow:
-            0 12px 28px rgba(0, 0, 0, .25);
-    }
-
-    .new-video-action {
-        background:
-            linear-gradient(
-                135deg,
-                #059669,
-                #10b981
-            );
-    }
-
-    .courses-action {
-        background:
-            linear-gradient(
-                135deg,
-                #0284c7,
-                #06b6d4
-            );
-    }
-
-    .categories-action {
-        background:
-            linear-gradient(
-                135deg,
-                #d97706,
-                #f59e0b
-            );
-    }
-
-    .enrollments-action {
-        background:
-            linear-gradient(
-                135deg,
-                #475569,
-                #64748b
-            );
-    }
-
-    .feedback-action {
-        background:
-            linear-gradient(
-                135deg,
-                #dc2626,
-                #ef4444
-            );
-    }
-
-    /* =========================================
-       RESPONSIVE
-    ========================================= */
-
-    @media (max-width: 991px) {
-
-        .manage-videos-page {
-            padding-top: 90px;
+        .video-page::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            right: -170px;
+            bottom: 80px;
+            border-radius: 50%;
+            background: rgba(6,182,212,.08);
+            filter: blur(85px);
+            pointer-events: none;
         }
 
-        .videos-hero h1 {
-            font-size: 38px;
+        .video-page .container {
+            position: relative;
+            z-index: 2;
         }
 
-        .videos-header {
-            align-items: flex-start;
-            flex-direction: column;
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .video-hero {
+            position: relative;
+            min-height: 330px;
+            background-position: center;
+            background-size: cover;
         }
 
-        .add-video-btn {
+        .video-hero .overlay {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(3,7,25,.96),
+                    rgba(26,10,58,.90),
+                    rgba(3,24,45,.92)
+                ) !important;
+        }
+
+        .video-hero .bread {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: .5px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #c4b5fd,
+                    #67e8f9
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            text-shadow:
+                0 0 30px rgba(103,232,249,.12);
+        }
+
+        .video-hero .breadcrumbs {
+            display: inline-block;
+
+            margin-top: 10px;
+            padding: 8px 18px;
+
+            border-radius: 30px;
+
+            color: #d8ddff !important;
+
+            background: rgba(8,15,38,.68);
+
+            border: 1px solid rgba(103,232,249,.20);
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           COMMON GLASS CARDS
+        ========================================================= */
+
+        .video-form,
+        .video-grid,
+        .video-statistics,
+        .video-actions {
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18,27,58,.95),
+                    rgba(7,13,33,.97)
+                );
+
+            border: 1px solid rgba(139,92,246,.25);
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.42),
+                inset 0 1px 0 rgba(255,255,255,.05);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            overflow: hidden;
+
+            transition: .35s ease;
+        }
+
+        .video-form::before,
+        .video-grid::before,
+        .video-statistics::before,
+        .video-actions::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7c3aed,
+                    #06b6d4,
+                    #8b5cf6,
+                    #22d3ee
+                );
+
+            background-size: 250% 100%;
+
+            animation: videoBorder 6s linear infinite;
+        }
+
+        @keyframes videoBorder {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .video-form:hover,
+        .video-grid:hover,
+        .video-statistics:hover,
+        .video-actions:hover {
+
+            transform: translateY(-3px);
+
+            border-color: rgba(103,232,249,.30);
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.48),
+                0 0 35px rgba(124,58,237,.08);
+        }
+
+
+        /* =========================================================
+           VIDEO FORM
+        ========================================================= */
+
+        .video-form {
+
+            padding: 34px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================================================
+           HEADINGS
+        ========================================================= */
+
+        .video-form h3,
+        .video-grid h3,
+        .video-statistics h3,
+        .video-actions h3 {
+
+            position: relative;
+
+            color: #ffffff;
+
+            font-size: 25px;
+
+            font-weight: 700;
+
+            margin-bottom: 28px;
+
+            padding-bottom: 17px;
+        }
+
+        .video-form h3::after,
+        .video-grid h3::after,
+        .video-statistics h3::after,
+        .video-actions h3::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 65px;
+            height: 3px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #8b5cf6,
+                    #22d3ee
+                );
+
+            box-shadow:
+                0 0 15px rgba(34,211,238,.35);
+        }
+
+
+        /* =========================================================
+           LABELS
+        ========================================================= */
+
+        .video-form label {
+
+            display: block;
+
+            color: #e0e7ff;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            margin-bottom: 9px;
+        }
+
+
+        /* =========================================================
+           INPUTS
+        ========================================================= */
+
+        .video-form .form-control {
+
             width: 100%;
+
+            height: 48px;
+
+            box-sizing: border-box;
+
+            padding: 10px 15px;
+
+            margin-bottom: 21px;
+
+            color: #ffffff !important;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(12,20,45,.96),
+                    rgba(7,13,31,.96)
+                ) !important;
+
+            border: 1px solid rgba(129,140,248,.25) !important;
+
+            border-radius: 12px !important;
+
+            outline: none;
+
+            box-shadow:
+                inset 0 2px 8px rgba(0,0,0,.25);
+
+            transition: all .3s ease;
         }
 
-    }
+        .video-form .form-control::placeholder {
 
-    @media (max-width: 767px) {
+            color: #7883a8 !important;
 
-        .manage-videos-page {
-            padding-top: 80px;
-            padding-bottom: 50px;
+            opacity: 1;
         }
 
-        .videos-hero {
-            margin: 0 15px 25px;
+        .video-form .form-control:hover {
 
-            padding: 35px 20px;
-
-            border-radius: 20px;
+            border-color:
+                rgba(139,92,246,.50) !important;
         }
 
-        .videos-hero h1 {
-            font-size: 31px;
+        .video-form .form-control:focus {
+
+            color: #ffffff !important;
+
+            border-color:
+                #22d3ee !important;
+
+            box-shadow:
+                0 0 0 3px rgba(34,211,238,.08),
+                0 0 22px rgba(34,211,238,.14),
+                inset 0 2px 8px rgba(0,0,0,.25) !important;
+
+            transform: translateY(-1px);
         }
 
-        .videos-container {
-            margin: 0 15px;
+        select.form-control {
+
+            cursor: pointer;
         }
 
-        .videos-panel {
-            padding: 18px;
+        select.form-control option {
 
-            border-radius: 20px;
+            background: #0b1228;
+
+            color: #ffffff;
         }
 
-        .videos-title {
-            font-size: 23px;
+
+        /* =========================================================
+           FORM BUTTONS
+        ========================================================= */
+
+        .video-form .btn {
+
+            position: relative;
+
+            padding: 12px 24px;
+
+            border: none !important;
+
+            border-radius: 12px !important;
+
+            color: #ffffff !important;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            margin-right: 8px;
+
+            margin-bottom: 8px;
+
+            cursor: pointer;
+
+            transition: all .3s ease;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.25);
         }
 
-        .video-info-card {
-            margin-bottom: 20px;
+        .video-form .btn:hover {
 
-            padding: 22px;
+            color: #ffffff !important;
+
+            transform: translateY(-3px);
         }
 
-    }
 
-    @media (prefers-reduced-motion: reduce) {
+        /* SAVE */
 
-        .video-orb,
-        .videos-table tbody tr,
-        .video-info-card,
-        .quick-action,
-        .video-action,
-        .add-video-btn,
-        .view-videos-btn {
-            animation: none !important;
-            transition: none !important;
+        .video-save-btn {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #a855f7,
+                    #ec4899
+                ) !important;
+
+            box-shadow:
+                0 10px 28px rgba(168,85,247,.28);
         }
 
-    }
 
-</style>
+        /* UPDATE */
+
+        .video-update-btn {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0891b2,
+                    #06b6d4,
+                    #2563eb
+                ) !important;
+
+            box-shadow:
+                0 10px 28px rgba(6,182,212,.25);
+        }
+
+
+        /* CLEAR */
+
+        .video-clear-btn {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #475569,
+                    #1e293b
+                ) !important;
+        }
+
+
+        /* =========================================================
+           MESSAGE
+        ========================================================= */
+
+        .video-message {
+
+            display: block;
+
+            margin-top: 12px;
+
+            padding: 11px 15px;
+
+            min-height: 18px;
+
+            border-radius: 11px;
+
+            color: #67e8a5 !important;
+
+            background: rgba(16,185,129,.08);
+
+            border:
+                1px solid rgba(16,185,129,.18);
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+           VIDEO GRID
+        ========================================================= */
+
+        .video-grid {
+
+            padding: 34px;
+
+            margin-bottom: 30px;
+        }
+
+        .video-table-wrapper {
+
+            width: 100%;
+
+            overflow-x: auto;
+
+            border-radius: 15px;
+
+            border:
+                1px solid rgba(129,140,248,.18);
+        }
+
+
+        /* =========================================================
+           GRIDVIEW TABLE
+        ========================================================= */
+
+        .video-grid-table {
+
+            width: 100%;
+
+            min-width: 850px;
+
+            border-collapse: separate !important;
+
+            border-spacing: 0 !important;
+
+            background: transparent !important;
+
+            border: none !important;
+        }
+
+        .video-grid-table th {
+
+            padding: 16px 14px !important;
+
+            color: #ffffff !important;
+
+            text-align: left;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #312e81,
+                    #4c1d95,
+                    #155e75
+                ) !important;
+
+            border: none !important;
+
+            border-bottom:
+                1px solid rgba(103,232,249,.25) !important;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+            text-transform: uppercase;
+        }
+
+        .video-grid-table td {
+
+            padding: 15px 14px !important;
+
+            color: #cdd6f8 !important;
+
+            background:
+                rgba(8,15,35,.90) !important;
+
+            border: none !important;
+
+            border-bottom:
+                1px solid rgba(129,140,248,.10) !important;
+
+            vertical-align: middle;
+
+            font-size: 14px;
+        }
+
+        .video-grid-table tr:nth-child(even) td {
+
+            background:
+                rgba(14,23,52,.92) !important;
+        }
+
+        .video-grid-table tr:hover td {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(124,58,237,.12),
+                    rgba(6,182,212,.08)
+                ) !important;
+
+            border-bottom-color:
+                rgba(103,232,249,.20) !important;
+        }
+
+        .video-grid-table a {
+
+            text-decoration: none !important;
+        }
+
+
+        /* =========================================================
+           TABLE TEXT
+        ========================================================= */
+
+        .video-id {
+
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 8px;
+
+            color: #c4b5fd !important;
+
+            background:
+                rgba(124,58,237,.12);
+
+            font-weight: 700;
+        }
+
+        .video-title-text {
+
+            color: #f1f5ff !important;
+
+            font-weight: 600;
+        }
+
+        .video-course-text {
+
+            color: #c4b5fd !important;
+
+            font-weight: 600;
+        }
+
+        .video-duration-text {
+
+            color: #67e8f9 !important;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           STATUS
+        ========================================================= */
+
+        .video-status {
+
+            display: inline-block;
+
+            padding: 6px 13px;
+
+            border-radius: 30px;
+
+            color: #6ee7b7 !important;
+
+            background:
+                rgba(16,185,129,.12);
+
+            border:
+                1px solid rgba(52,211,153,.22);
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           EDIT BUTTON
+        ========================================================= */
+
+        .video-edit-btn {
+
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            margin: 3px;
+
+            border: none !important;
+
+            border-radius: 9px;
+
+            color: #ffffff !important;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #6366f1
+                ) !important;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            transition: all .3s ease;
+        }
+
+        .video-edit-btn:hover {
+
+            color: #ffffff !important;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 24px rgba(124,58,237,.35);
+        }
+
+
+        /* =========================================================
+           DELETE BUTTON
+        ========================================================= */
+
+        .video-delete-btn {
+
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            margin: 3px;
+
+            border: none !important;
+
+            border-radius: 9px;
+
+            color: #ffffff !important;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dc2626,
+                    #be123c
+                ) !important;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            transition: all .3s ease;
+        }
+
+        .video-delete-btn:hover {
+
+            color: #ffffff !important;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 24px rgba(220,38,38,.30);
+        }
+
+
+        /* =========================================================
+           STATISTICS
+        ========================================================= */
+
+        .video-statistics {
+
+            padding: 34px;
+
+            margin-bottom: 30px;
+        }
+
+        .video-statistics p {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin: 0 0 12px;
+
+            padding: 13px 16px;
+
+            color: #cdd6f8;
+
+            background:
+                rgba(8,15,35,.65);
+
+            border:
+                1px solid rgba(129,140,248,.12);
+
+            border-radius: 12px;
+
+            transition: .25s ease;
+        }
+
+        .video-statistics p:last-child {
+
+            margin-bottom: 0;
+        }
+
+        .video-statistics p:hover {
+
+            transform: translateX(4px);
+
+            border-color:
+                rgba(103,232,249,.25);
+
+            background:
+                rgba(14,23,52,.85);
+        }
+
+        .video-statistics strong {
+
+            color: #e0e7ff;
+
+            font-weight: 600;
+        }
+
+        .video-statistics span {
+
+            color: #67e8f9 !important;
+
+            font-size: 16px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+           QUICK ACTIONS
+        ========================================================= */
+
+        .video-actions {
+
+            padding: 34px;
+
+            margin-bottom: 0;
+        }
+
+        .video-actions .btn {
+
+            display: inline-block;
+
+            padding: 12px 21px;
+
+            margin: 5px;
+
+            border: none !important;
+
+            border-radius: 11px !important;
+
+            color: #ffffff !important;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            transition: all .3s ease;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,.25);
+        }
+
+        .video-actions .btn:hover {
+
+            color: #ffffff !important;
+
+            transform: translateY(-3px);
+        }
+
+        .quick-add-video {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #4f46e5
+                ) !important;
+        }
+
+        .quick-manage-courses {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0891b2,
+                    #06b6d4
+                ) !important;
+        }
+
+        .quick-manage-categories {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f59e0b,
+                    #d97706
+                ) !important;
+        }
+
+        .quick-manage-enrollments {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #475569,
+                    #334155
+                ) !important;
+        }
+
+        .quick-manage-feedback {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dc2626,
+                    #be123c
+                ) !important;
+        }
+
+
+        /* =========================================================
+           SCROLLBAR
+        ========================================================= */
+
+        .video-table-wrapper::-webkit-scrollbar {
+            height: 7px;
+        }
+
+        .video-table-wrapper::-webkit-scrollbar-track {
+
+            background: #080d20;
+
+            border-radius: 10px;
+        }
+
+        .video-table-wrapper::-webkit-scrollbar-thumb {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7c3aed,
+                    #06b6d4
+                );
+
+            border-radius: 10px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 991px) {
+
+            .video-hero .bread {
+                font-size: 40px;
+            }
+
+            .video-form,
+            .video-grid,
+            .video-statistics,
+            .video-actions {
+                padding: 27px;
+            }
+        }
+
+
+        @media (max-width: 767px) {
+
+            .video-page {
+                padding: 30px 0 50px;
+            }
+
+            .video-hero {
+                min-height: 280px;
+            }
+
+            .video-hero .bread {
+                font-size: 31px;
+            }
+
+            .video-hero .breadcrumbs {
+                font-size: 12px;
+            }
+
+            .video-form,
+            .video-grid,
+            .video-statistics,
+            .video-actions {
+
+                padding: 20px;
+
+                border-radius: 17px;
+            }
+
+            .video-form h3,
+            .video-grid h3,
+            .video-statistics h3,
+            .video-actions h3 {
+
+                font-size: 21px;
+            }
+
+            .video-form .btn {
+
+                width: 100%;
+
+                display: block;
+
+                margin-right: 0;
+            }
+
+            .video-table-wrapper {
+
+                overflow-x: auto;
+            }
+
+            .video-grid-table {
+
+                min-width: 850px;
+            }
+
+            .video-statistics p {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 5px;
+            }
+
+            .video-actions .btn {
+
+                display: block;
+
+                width: 100%;
+
+                margin: 9px 0;
+
+                text-align: center;
+            }
+        }
+
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .video-form::before,
+            .video-grid::before,
+            .video-statistics::before,
+            .video-actions::before {
+
+                animation: none;
+            }
+
+            .video-form,
+            .video-grid,
+            .video-statistics,
+            .video-actions,
+            .video-form .btn,
+            .video-actions .btn,
+            .video-edit-btn,
+            .video-delete-btn {
+
+                transition: none;
+            }
+        }
+
+    </style>
 
 </asp:Content>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<div class="manage-videos-page">
 
-    <!-- Background Orbs -->
+    <section class="hero-wrap hero-wrap-2 video-hero"
+        style="background-image:url('images/bg_2.jpg');">
 
-    <div class="video-orb one"></div>
-    <div class="video-orb two"></div>
-    <div class="video-orb three"></div>
+        <div class="overlay"></div>
 
+        <div class="container">
 
-    <!-- Hero -->
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
 
-    <div class="videos-hero">
+                <div class="col-md-9 text-center pb-5">
 
-        <h1>
-            Manage Videos
-        </h1>
+                    <h1 class="bread">
+                        Manage Videos
+                    </h1>
 
-        <p>
-            Admin Panel / Manage Videos
-        </p>
-
-    </div>
-
-
-    <!-- Main Container -->
-
-    <div class="videos-container">
-
-        <!-- Videos Panel -->
-
-        <div class="videos-panel">
-
-            <div class="videos-header">
-
-                <div>
-
-                    <h3 class="videos-title">
-                        Course Videos
-                    </h3>
-
-                    <p class="videos-subtitle">
-                        Manage course lessons, video status and content
+                    <p class="breadcrumbs">
+                        Admin Panel / Manage Videos
                     </p>
 
                 </div>
 
-
-                <a href="#" class="add-video-btn">
-                    Add New Video
-                </a>
-
-            </div>
-
-
-            <!-- Video Table -->
-
-            <div class="videos-table-wrapper">
-
-                <table class="videos-table">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>ID</th>
-
-                            <th>Video Title</th>
-
-                            <th>Course</th>
-
-                            <th>Duration</th>
-
-                            <th>Status</th>
-
-                            <th>Action</th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody>
-
-                        <tr>
-
-                            <td>1</td>
-
-                            <td>
-                                Introduction to HTML
-                            </td>
-
-                            <td>
-                                HTML &amp; CSS
-                            </td>
-
-                            <td>
-                                15 Min
-                            </td>
-
-                            <td>
-
-                                <span class="video-status published-status">
-                                    Published
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <a href="#" class="video-action edit-video">
-                                    Edit
-                                </a>
-
-                                <a href="#" class="video-action delete-video">
-                                    Delete
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>2</td>
-
-                            <td>
-                                HTML Forms
-                            </td>
-
-                            <td>
-                                HTML &amp; CSS
-                            </td>
-
-                            <td>
-                                18 Min
-                            </td>
-
-                            <td>
-
-                                <span class="video-status published-status">
-                                    Published
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <a href="#" class="video-action edit-video">
-                                    Edit
-                                </a>
-
-                                <a href="#" class="video-action delete-video">
-                                    Delete
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>3</td>
-
-                            <td>
-                                ASP.NET Controls
-                            </td>
-
-                            <td>
-                                ASP.NET Web Forms
-                            </td>
-
-                            <td>
-                                22 Min
-                            </td>
-
-                            <td>
-
-                                <span class="video-status published-status">
-                                    Published
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <a href="#" class="video-action edit-video">
-                                    Edit
-                                </a>
-
-                                <a href="#" class="video-action delete-video">
-                                    Delete
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>4</td>
-
-                            <td>
-                                CSS Flexbox
-                            </td>
-
-                            <td>
-                                HTML &amp; CSS
-                            </td>
-
-                            <td>
-                                20 Min
-                            </td>
-
-                            <td>
-
-                                <span class="video-status published-status">
-                                    Published
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <a href="#" class="video-action edit-video">
-                                    Edit
-                                </a>
-
-                                <a href="#" class="video-action delete-video">
-                                    Delete
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>5</td>
-
-                            <td>
-                                Python Basics
-                            </td>
-
-                            <td>
-                                Python Programming
-                            </td>
-
-                            <td>
-                                25 Min
-                            </td>
-
-                            <td>
-
-                                <span class="video-status published-status">
-                                    Published
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <a href="#" class="video-action edit-video">
-                                    Edit
-                                </a>
-
-                                <a href="#" class="video-action delete-video">
-                                    Delete
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>6</td>
-
-                            <td>
-                                Java OOP Concepts
-                            </td>
-
-                            <td>
-                                Java Programming
-                            </td>
-
-                            <td>
-                                30 Min
-                            </td>
-
-                            <td>
-
-                                <span class="video-status published-status">
-                                    Published
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <a href="#" class="video-action edit-video">
-                                    Edit
-                                </a>
-
-                                <a href="#" class="video-action delete-video">
-                                    Delete
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>7</td>
-
-                            <td>
-                                JavaScript DOM
-                            </td>
-
-                            <td>
-                                JavaScript
-                            </td>
-
-                            <td>
-                                24 Min
-                            </td>
-
-                            <td>
-
-                                <span class="video-status draft-status">
-                                    Draft
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <a href="#" class="video-action edit-video">
-                                    Edit
-                                </a>
-
-                                <a href="#" class="video-action delete-video">
-                                    Delete
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>8</td>
-
-                            <td>
-                                SQL Queries
-                            </td>
-
-                            <td>
-                                Database Management
-                            </td>
-
-                            <td>
-                                28 Min
-                            </td>
-
-                            <td>
-
-                                <span class="video-status published-status">
-                                    Published
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <a href="#" class="video-action edit-video">
-                                    Edit
-                                </a>
-
-                                <a href="#" class="video-action delete-video">
-                                    Delete
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>9</td>
-
-                            <td>
-                                Cyber Security Basics
-                            </td>
-
-                            <td>
-                                Cyber Security
-                            </td>
-
-                            <td>
-                                35 Min
-                            </td>
-
-                            <td>
-
-                                <span class="video-status draft-status">
-                                    Draft
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <a href="#" class="video-action edit-video">
-                                    Edit
-                                </a>
-
-                                <a href="#" class="video-action delete-video">
-                                    Delete
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
             </div>
 
         </div>
 
-
-        <!-- Bottom Section -->
-
-        <div class="row bottom-section">
-
-            <!-- Video Statistics -->
-
-            <div class="col-md-6 mb-4">
-
-                <div class="video-info-card">
-
-                    <h3>
-                        Video Statistics
-                    </h3>
+    </section>
 
 
-                    <div class="video-stat">
+    <section class="video-page">
 
-                        <span>
-                            Total Videos
-                        </span>
-
-                        <strong class="stat-number">
-                            35
-                        </strong>
-
-                    </div>
+        <div class="container">
 
 
-                    <div class="video-stat">
+            <div class="video-form">
 
-                        <span>
-                            Published Videos
-                        </span>
+                <h3>
+                    Add Course Video
+                </h3>
 
-                        <strong class="stat-number">
-                            30
-                        </strong>
+
+                <div class="row">
+
+
+                    <div class="col-md-6">
+
+                        <label>
+                            Video Title
+                        </label>
+
+                        <asp:TextBox
+                            ID="txtVideoTitle"
+                            runat="server"
+                            CssClass="form-control"
+                            placeholder="Enter video title">
+                        </asp:TextBox>
 
                     </div>
 
 
-                    <div class="video-stat">
+                    <div class="col-md-6">
 
-                        <span>
-                            Draft Videos
-                        </span>
+                        <label>
+                            Course
+                        </label>
 
-                        <strong class="stat-number">
-                            5
-                        </strong>
+                        <asp:DropDownList
+                            ID="ddlCourse"
+                            runat="server"
+                            CssClass="form-control">
 
-                    </div>
+                            <asp:ListItem
+                                Text="-- Select Course --"
+                                Value="0">
+                            </asp:ListItem>
 
-
-                    <div class="video-stat">
-
-                        <span>
-                            Total Courses
-                        </span>
-
-                        <strong class="stat-number">
-                            20
-                        </strong>
+                        </asp:DropDownList>
 
                     </div>
 
 
-                    <div class="video-stat">
+                    <div class="col-md-6">
 
-                        <span>
-                            Total Watch Hours
-                        </span>
+                        <label>
+                            Duration (Minutes)
+                        </label>
 
-                        <strong class="stat-number">
-                            1250 Hours
-                        </strong>
+                        <asp:TextBox
+                            ID="txtDuration"
+                            runat="server"
+                            TextMode="Number"
+                            CssClass="form-control"
+                            placeholder="Enter duration">
+                        </asp:TextBox>
 
                     </div>
 
 
-                    <a href="#" class="view-videos-btn">
-                        View All Videos
-                    </a>
+                    <div class="col-md-6">
+
+                        <label>
+                            Video URL
+                        </label>
+
+                        <asp:TextBox
+                            ID="txtVideoURL"
+                            runat="server"
+                            CssClass="form-control"
+                            placeholder="Enter video URL">
+                        </asp:TextBox>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <label>
+                            Status
+                        </label>
+
+                        <asp:DropDownList
+                            ID="ddlStatus"
+                            runat="server"
+                            CssClass="form-control">
+
+                            <asp:ListItem
+                                Text="Published"
+                                Value="Published">
+                            </asp:ListItem>
+
+                            <asp:ListItem
+                                Text="Draft"
+                                Value="Draft">
+                            </asp:ListItem>
+
+                        </asp:DropDownList>
+
+                    </div>
+
+
+                </div>
+
+
+                <asp:Button
+                    ID="btnSave"
+                    runat="server"
+                    Text="Save Video"
+                    CssClass="btn video-save-btn"
+                    OnClick="btnSave_Click" />
+
+
+                <asp:Button
+                    ID="btnUpdate"
+                    runat="server"
+                    Text="Update Video"
+                    CssClass="btn video-update-btn"
+                    OnClick="btnUpdate_Click" />
+
+
+                <asp:Button
+                    ID="btnClear"
+                    runat="server"
+                    Text="Clear"
+                    CssClass="btn video-clear-btn"
+                    CausesValidation="false"
+                    OnClick="btnClear_Click" />
+
+
+                <asp:Label
+                    ID="lblMessage"
+                    runat="server"
+                    CssClass="video-message">
+                </asp:Label>
+
+
+            </div>
+
+
+            <div class="video-grid">
+
+                <h3>
+                    Course Videos
+                </h3>
+
+
+                <div class="video-table-wrapper">
+
+
+                    <asp:GridView
+    ID="gvVideos"
+    runat="server"
+    AutoGenerateColumns="False"
+    CssClass="video-grid-table"
+    GridLines="None"
+    OnRowCommand="gvVideos_RowCommand"
+    EmptyDataText="No videos found.">
+
+    <Columns>
+
+        <asp:TemplateField HeaderText="ID">
+            <ItemTemplate>
+                <asp:Label
+                    ID="lblID"
+                    runat="server"
+                    Text='<%# Eval("ID") %>'
+                    CssClass="video-id">
+                </asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+
+
+        <asp:TemplateField HeaderText="Video Title">
+            <ItemTemplate>
+                <asp:Label
+                    ID="lblVideoTitle"
+                    runat="server"
+                    Text='<%# Eval("VideoTitle") %>'
+                    CssClass="video-title-text">
+                </asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+
+
+        <asp:TemplateField HeaderText="Course">
+            <ItemTemplate>
+                <asp:Label
+                    ID="lblCourse"
+                    runat="server"
+                    Text='<%# Eval("CourseName") %>'
+                    CssClass="video-course-text">
+                </asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+
+
+        <asp:TemplateField HeaderText="Duration">
+            <ItemTemplate>
+
+                <asp:Label
+                    ID="lblDuration"
+                    runat="server"
+                    Text='<%# Eval("Duration") %>'
+                    CssClass="video-duration-text">
+                </asp:Label>
+
+                <span style="color:#7883a8;">Min</span>
+
+            </ItemTemplate>
+        </asp:TemplateField>
+
+
+        <asp:TemplateField HeaderText="Watch Video">
+            <ItemTemplate>
+
+                <asp:HyperLink
+                    ID="hlVideo"
+                    runat="server"
+                    Text="Watch Video"
+                    NavigateUrl='<%# Eval("VideoURL") %>'
+                    Target="_blank"
+                    CssClass="btn btn-success btn-sm">
+                </asp:HyperLink>
+
+            </ItemTemplate>
+        </asp:TemplateField>
+
+
+        <asp:TemplateField HeaderText="Status">
+            <ItemTemplate>
+
+                <asp:Label
+                    ID="lblStatus"
+                    runat="server"
+                    Text='<%# Eval("Status") %>'
+                    CssClass="video-status">
+                </asp:Label>
+
+            </ItemTemplate>
+        </asp:TemplateField>
+
+
+        <asp:TemplateField HeaderText="Action">
+            <ItemTemplate>
+
+                <asp:LinkButton
+                    ID="btnEdit"
+                    runat="server"
+                    Text="Edit"
+                    CommandName="cmd_edit"
+                    CommandArgument='<%# Eval("ID") %>'
+                    CausesValidation="false"
+                    CssClass="video-edit-btn">
+                </asp:LinkButton>
+
+                <asp:LinkButton
+                    ID="btnDelete"
+                    runat="server"
+                    Text="Delete"
+                    CommandName="cmd_delete"
+                    CommandArgument='<%# Eval("ID") %>'
+                    CausesValidation="false"
+                    CssClass="video-delete-btn"
+                    OnClientClick="return confirm('Are you sure you want to delete this video?');">
+                </asp:LinkButton>
+
+            </ItemTemplate>
+        </asp:TemplateField>
+
+    </Columns>
+
+</asp:GridView>
+
 
                 </div>
 
             </div>
 
 
-            <!-- Quick Actions -->
+            <div class="video-statistics">
 
-            <div class="col-md-6 mb-4">
-
-                <div class="video-info-card">
-
-                    <h3>
-                        Quick Actions
-                    </h3>
+                <h3>
+                    Video Statistics
+                </h3>
 
 
-                    <a href="#"
-                       class="quick-action new-video-action">
+                <p>
 
-                        Add New Video
+                    <strong>
+                        Total Videos:
+                    </strong>
 
-                    </a>
+                    <asp:Label
+                        ID="lblTotalVideos"
+                        runat="server"
+                        Text="0">
+                    </asp:Label>
 
-
-                    <a href="ManageCourses.aspx"
-                       class="quick-action courses-action">
-
-                        Manage Courses
-
-                    </a>
-
-
-                    <a href="ManageCategories.aspx"
-                       class="quick-action categories-action">
-
-                        Manage Categories
-
-                    </a>
+                </p>
 
 
-                    <a href="ManageEnrollments.aspx"
-                       class="quick-action enrollments-action">
+                <p>
 
-                        Manage Enrollments
+                    <strong>
+                        Published Videos:
+                    </strong>
 
-                    </a>
+                    <asp:Label
+                        ID="lblPublishedVideos"
+                        runat="server"
+                        Text="0">
+                    </asp:Label>
+
+                </p>
 
 
-                    <a href="ManageFeedback.aspx"
-                       class="quick-action feedback-action">
+                <p>
 
-                        View Feedback
+                    <strong>
+                        Draft Videos:
+                    </strong>
 
-                    </a>
+                    <asp:Label
+                        ID="lblDraftVideos"
+                        runat="server"
+                        Text="0">
+                    </asp:Label>
 
-                </div>
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Total Courses:
+                    </strong>
+
+                    <asp:Label
+                        ID="lblTotalCourses"
+                        runat="server"
+                        Text="0">
+                    </asp:Label>
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Total Watch Hours:
+                    </strong>
+
+                    <asp:Label
+                        ID="lblWatchHours"
+                        runat="server"
+                        Text="0">
+                    </asp:Label>
+
+                </p>
+
 
             </div>
 
+
+            <div class="video-actions">
+
+                <h3>
+                    Quick Actions
+                </h3>
+
+
+                <asp:Button
+                    ID="btnAddNewVideo"
+                    runat="server"
+                    Text="Add New Video"
+                    CssClass="btn quick-add-video"
+                    CausesValidation="false" OnClick="btnAddNewVideo_Click" />
+
+
+                <asp:Button
+                    ID="btnManageCourses"
+                    runat="server"
+                    Text="Manage Courses"
+                    CssClass="btn quick-manage-courses"
+                    CausesValidation="false"
+                    PostBackUrl="~/ManageCourses.aspx" OnClick="btnManageCourses_Click" />
+
+
+                <asp:Button
+                    ID="btnManageCategories"
+                    runat="server"
+                    Text="Manage Categories"
+                    CssClass="btn quick-manage-categories"
+                    CausesValidation="false"
+                    PostBackUrl="~/ManageCategories.aspx" OnClick="btnManageCategories_Click" />
+
+
+                <asp:Button
+                    ID="btnManageEnrollments"
+                    runat="server"
+                    Text="Manage Enrollments"
+                    CssClass="btn quick-manage-enrollments"
+                    CausesValidation="false"
+                    PostBackUrl="~/ManageEnrollments.aspx" OnClick="btnManageEnrollments_Click" />
+
+
+                <asp:Button
+                    ID="btnManageFeedback"
+                    runat="server"
+                    Text="View Feedback"
+                    CssClass="btn quick-manage-feedback"
+                    CausesValidation="false"
+                    PostBackUrl="~/ManageFeedback.aspx" OnClick="btnManageFeedback_Click" />
+
+
+            </div>
+
+
         </div>
 
-    </div>
-
-</div>
+    </section>
 
 </asp:Content>

@@ -1,974 +1,410 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Student.Master" AutoEventWireup="true" CodeBehind="feedback.aspx.cs" Inherits="OnlineCourse.feedback" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="ManageFeedback.aspx.cs" Inherits="OnlineCourse.ManageFeedback" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-    <style>
-
-        /* ================================
-           LEARNSPHERE FEEDBACK PAGE
-           Scoped CSS - Master Page Safe
-        ================================= */
-
+     <style>
         .feedback-page {
-            --fb-purple: #8b5cf6;
-            --fb-blue: #38bdf8;
-            --fb-cyan: #22d3ee;
-            --fb-dark: #090b18;
-            --fb-card: rgba(20, 22, 43, 0.88);
-            --fb-text: #f8fafc;
-            --fb-muted: #a7adc4;
-
-            background:
-                radial-gradient(circle at 10% 10%, rgba(139, 92, 246, .13), transparent 28%),
-                radial-gradient(circle at 90% 30%, rgba(34, 211, 238, .10), transparent 28%),
-                linear-gradient(180deg, #080a17 0%, #0d1021 100%);
-
-            color: var(--fb-text);
-            min-height: 100vh;
-            overflow: hidden;
+            padding: 40px 0;
+            background: #f5f7fa;
         }
 
-        /* HERO */
-
-        .feedback-page .feedback-hero {
-            position: relative;
-            min-height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-
-            background:
-                linear-gradient(135deg,
-                rgba(8, 10, 25, .94),
-                rgba(41, 23, 76, .88)),
-                url('images/bg_2.jpg') center/cover;
+        .feedback-card {
+            background: #ffffff;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
         }
 
-        .feedback-page .feedback-hero::before {
-            content: "";
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            background: rgba(139, 92, 246, .16);
-            filter: blur(70px);
-            top: -150px;
-            left: -100px;
+        .feedback-card h3 {
+            color: #222;
+            font-weight: 600;
+            margin-bottom: 25px;
         }
 
-        .feedback-page .feedback-hero::after {
-            content: "";
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(34, 211, 238, .12);
-            filter: blur(70px);
-            right: -100px;
-            bottom: -130px;
-        }
-
-        .feedback-page .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            padding: 80px 20px 70px;
-        }
-
-        .feedback-page .hero-badge {
-            display: inline-block;
-            padding: 8px 18px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(139, 92, 246, .5);
-            border-radius: 50px;
-            background: rgba(139, 92, 246, .12);
-            color: #c4b5fd;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 0 25px rgba(139, 92, 246, .15);
-        }
-
-        .feedback-page .hero-title {
-            margin: 0;
-            font-size: clamp(38px, 6vw, 62px);
-            font-weight: 800;
-            line-height: 1.05;
-
-            background: linear-gradient(
-                90deg,
-                #ffffff,
-                #c4b5fd,
-                #67e8f9
-            );
-
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .feedback-page .hero-subtitle {
-            margin: 18px 0 0;
-            color: #aeb5d0;
-            font-size: 17px;
-            letter-spacing: .3px;
-        }
-
-        /* MAIN */
-
-        .feedback-page .feedback-section {
-            padding: 80px 0;
-        }
-
-        .feedback-page .feedback-wrapper {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        /* FEEDBACK CARD */
-
-        .feedback-page .feedback-card {
-            position: relative;
-            padding: 45px;
-            border-radius: 28px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(31, 34, 63, .92),
-                    rgba(13, 15, 32, .94)
-                );
-
-            border: 1px solid rgba(139, 92, 246, .28);
-
-            box-shadow:
-                0 25px 70px rgba(0, 0, 0, .38),
-                inset 0 1px 0 rgba(255,255,255,.05);
-
-            overflow: hidden;
-        }
-
-        .feedback-page .feedback-card::before {
-            content: "";
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: rgba(139, 92, 246, .10);
-            filter: blur(45px);
-            top: -90px;
-            right: -60px;
-        }
-
-        .feedback-page .feedback-card::after {
-            content: "";
-            position: absolute;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: rgba(34, 211, 238, .07);
-            filter: blur(45px);
-            bottom: -70px;
-            left: -50px;
-        }
-
-        .feedback-page .card-heading {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            margin-bottom: 38px;
-        }
-
-        .feedback-page .feedback-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 18px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 22px;
-
-            background: linear-gradient(
-                135deg,
-                rgba(139, 92, 246, .25),
-                rgba(34, 211, 238, .16)
-            );
-
-            border: 1px solid rgba(139, 92, 246, .35);
-
-            color: #c4b5fd;
-            font-size: 30px;
-
-            box-shadow:
-                0 0 30px rgba(139, 92, 246, .16);
-        }
-
-        .feedback-page .card-heading h2 {
-            margin: 0;
-            font-size: 30px;
-            font-weight: 800;
-            color: #ffffff;
-        }
-
-        .feedback-page .card-heading p {
-            margin: 10px 0 0;
-            color: var(--fb-muted);
-            font-size: 15px;
-        }
-
-        /* FORM */
-
-        .feedback-page .form-group {
-            position: relative;
-            z-index: 2;
-            margin-bottom: 26px;
-        }
-
-        .feedback-page .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            color: #e8eaf5;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: .2px;
-        }
-
-        .feedback-page .form-group label i {
-            margin-right: 8px;
-            color: #a78bfa;
-        }
-
-        .feedback-page .form-control {
+        .feedback-grid {
             width: 100%;
-            min-height: 54px;
-
-            border-radius: 14px !important;
-            border: 1px solid rgba(148, 163, 184, .18) !important;
-
-            background: rgba(7, 9, 22, .72) !important;
-            color: #ffffff !important;
-
-            padding: 13px 17px !important;
-
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,.025),
-                0 8px 25px rgba(0,0,0,.12);
-
-            transition: all .3s ease;
+            background: #ffffff;
+            border-collapse: collapse;
         }
 
-        .feedback-page .form-control:focus {
-            outline: none !important;
-
-            border-color: rgba(139, 92, 246, .75) !important;
-
-            box-shadow:
-                0 0 0 3px rgba(139, 92, 246, .10),
-                0 0 25px rgba(139, 92, 246, .10) !important;
-        }
-
-        .feedback-page select.form-control {
-            cursor: pointer;
-        }
-
-        .feedback-page select.form-control option {
-            background: #15172d;
+        .feedback-grid th {
+            background: #343a40;
             color: #ffffff;
-        }
-
-        .feedback-page textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .feedback-page .submit-area {
-            position: relative;
-            z-index: 2;
+            padding: 14px;
             text-align: center;
-            margin-top: 34px;
         }
 
-        .feedback-page .submit-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-
-            min-width: 210px;
-            padding: 14px 30px;
-
-            border-radius: 50px;
-
-            color: #ffffff !important;
-            text-decoration: none !important;
-
-            font-size: 15px;
-            font-weight: 800;
-            letter-spacing: .3px;
-
-            background:
-                linear-gradient(
-                    100deg,
-                    #7c3aed,
-                    #8b5cf6,
-                    #06b6d4
-                );
-
-            box-shadow:
-                0 12px 35px rgba(124, 58, 237, .28);
-
-            transition: all .3s ease;
-        }
-
-        .feedback-page .submit-btn:hover {
-            color: #ffffff !important;
-            text-decoration: none;
-
-            box-shadow:
-                0 15px 45px rgba(139, 92, 246, .42);
-
-            transform: translateY(-3px);
-        }
-
-        /* REVIEWS */
-
-        .feedback-page .reviews-section {
-            padding: 85px 0;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(15, 17, 37, .95),
-                    rgba(9, 11, 24, .98)
-                );
-
-            border-top: 1px solid rgba(255,255,255,.04);
-            border-bottom: 1px solid rgba(255,255,255,.04);
-        }
-
-        .feedback-page .section-heading {
+        .feedback-grid td {
+            padding: 12px;
+            vertical-align: middle;
             text-align: center;
-            margin-bottom: 50px;
+            color: #444;
         }
 
-        .feedback-page .section-heading .small-title {
-            display: inline-block;
-            margin-bottom: 12px;
-
-            color: #67e8f9;
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .feedback-grid tr:hover td {
+            background: #f8fafc;
         }
 
-        .feedback-page .section-heading h2 {
-            margin: 0;
-            font-size: 36px;
-            font-weight: 800;
-            color: #ffffff;
+        .feedback-grid .btn {
+            margin: 3px;
         }
 
-        .feedback-page .section-heading p {
-            margin: 12px auto 0;
-            max-width: 600px;
-            color: #969db7;
+        .feedback-stat {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
         }
 
-        .feedback-page .review-card {
-            height: 100%;
-            padding: 30px;
-            border-radius: 23px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(28, 31, 57, .90),
-                    rgba(15, 17, 35, .96)
-                );
-
-            border: 1px solid rgba(139, 92, 246, .20);
-
-            box-shadow: 0 20px 45px rgba(0,0,0,.25);
-
-            transition: all .35s ease;
+        .feedback-stat h3 {
+            font-weight: 600;
+            margin-bottom: 25px;
         }
 
-        .feedback-page .review-card:hover {
-            border-color: rgba(139, 92, 246, .55);
-
-            box-shadow:
-                0 25px 55px rgba(0,0,0,.35),
-                0 0 30px rgba(139,92,246,.08);
-
-            transform: translateY(-7px);
-        }
-
-        .feedback-page .review-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
+        .feedback-stat p {
+            color: #444;
             margin-bottom: 18px;
         }
 
-        .feedback-page .student-info {
+        .feedback-actions {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .feedback-actions h3 {
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .feedback-actions .btn {
+            margin-bottom: 12px;
+        }
+
+        .rating {
+            color: #f0ad4e;
+            font-weight: 600;
+        }
+
+        .feedback-message {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .feedback-top {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 13px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
-
-        .feedback-page .student-avatar {
-            width: 48px;
-            height: 48px;
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 15px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(139,92,246,.30),
-                    rgba(34,211,238,.18)
-                );
-
-            border: 1px solid rgba(139,92,246,.30);
-
-            color: #c4b5fd;
-            font-weight: 800;
-            font-size: 17px;
-        }
-
-        .feedback-page .student-info h4 {
-            margin: 0;
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: 750;
-        }
-
-        .feedback-page .rating {
-            color: #fbbf24;
-            font-size: 15px;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
-        .feedback-page .review-text {
-            margin: 0;
-            color: #aeb4c8;
-            line-height: 1.8;
-            font-size: 14px;
-        }
-
-        /* WHY FEEDBACK */
-
-        .feedback-page .why-section {
-            padding: 90px 0;
-        }
-
-        .feedback-page .why-card {
-            position: relative;
-            max-width: 900px;
-            margin: auto;
-
-            padding: 55px 45px;
-
-            text-align: center;
-
-            border-radius: 28px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(76, 29, 149, .22),
-                    rgba(8, 47, 73, .20)
-                );
-
-            border: 1px solid rgba(139,92,246,.28);
-
-            box-shadow:
-                0 25px 70px rgba(0,0,0,.30);
-
-            overflow: hidden;
-        }
-
-        .feedback-page .why-card::before {
-            content: "";
-            position: absolute;
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            background: rgba(139,92,246,.10);
-            filter: blur(60px);
-            left: -100px;
-            top: -120px;
-        }
-
-        .feedback-page .why-icon {
-            position: relative;
-            z-index: 2;
-
-            width: 65px;
-            height: 65px;
-
-            margin: 0 auto 20px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 20px;
-
-            background: rgba(34,211,238,.10);
-            border: 1px solid rgba(34,211,238,.25);
-
-            color: #67e8f9;
-            font-size: 27px;
-        }
-
-        .feedback-page .why-card h2 {
-            position: relative;
-            z-index: 2;
-
-            margin-bottom: 17px;
-
-            color: #ffffff;
-            font-size: 32px;
-            font-weight: 800;
-        }
-
-        .feedback-page .why-card p {
-            position: relative;
-            z-index: 2;
-
-            max-width: 720px;
-            margin: auto;
-
-            color: #aeb4c8;
-            line-height: 1.9;
-            font-size: 15px;
-        }
-
-        /* DECORATIVE DOTS */
-
-        .feedback-page .floating-dot {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-
-            background: #a78bfa;
-
-            box-shadow:
-                0 0 15px rgba(167,139,250,.9);
-
-            opacity: .7;
-        }
-
-        .feedback-page .dot-one {
-            top: 30%;
-            left: 8%;
-        }
-
-        .feedback-page .dot-two {
-            top: 65%;
-            right: 10%;
-            background: #67e8f9;
-            box-shadow: 0 0 15px rgba(103,232,249,.9);
-        }
-
-        .feedback-page .dot-three {
-            top: 18%;
-            right: 22%;
-        }
-
-        /* RESPONSIVE */
 
         @media (max-width: 768px) {
-
-            .feedback-page .feedback-hero {
-                min-height: 300px;
+            .feedback-card {
+                padding: 15px;
+                overflow-x: auto;
             }
 
-            .feedback-page .hero-content {
-                padding: 65px 18px;
-            }
-
-            .feedback-page .feedback-section,
-            .feedback-page .reviews-section,
-            .feedback-page .why-section {
-                padding: 55px 15px;
-            }
-
-            .feedback-page .feedback-card {
-                padding: 28px 20px;
-            }
-
-            .feedback-page .card-heading h2 {
-                font-size: 25px;
-            }
-
-            .feedback-page .section-heading h2 {
-                font-size: 29px;
-            }
-
-            .feedback-page .why-card {
-                padding: 40px 22px;
-            }
-
-            .feedback-page .why-card h2 {
-                font-size: 27px;
-            }
-
-            .feedback-page .review-card {
-                margin-bottom: 20px;
+            .feedback-grid {
+                min-width: 750px;
             }
         }
-
     </style>
 
 </asp:Content>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <!-- Hero Banner -->
 
-<div class="feedback-page">
+    <section class="hero-wrap hero-wrap-2"
+        style="background-image:url('images/bg_2.jpg');">
 
-    <!-- ================= HERO ================= -->
-
-    <section class="feedback-hero">
-
-        <span class="floating-dot dot-one"></span>
-        <span class="floating-dot dot-two"></span>
-        <span class="floating-dot dot-three"></span>
+        <div class="overlay"></div>
 
         <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 text-center pb-5">
 
-            <div class="hero-content">
+                    <h1 class="bread">Manage Feedback</h1>
 
-                <div class="hero-badge">
-                    ✦ Learner Voice
+                    <p class="breadcrumbs">
+                        Admin Panel / Manage Feedback
+                    </p>
+
                 </div>
-
-                <h1 class="hero-title">
-                    Course Feedback
-                </h1>
-
-                <p class="hero-subtitle">
-                    Share Your Learning Experience
-                </p>
-
             </div>
-
         </div>
-
     </section>
 
 
-    <!-- ================= FEEDBACK FORM ================= -->
-
-    <section class="feedback-section">
+    <section class="feedback-page">
 
         <div class="container">
 
-            <div class="feedback-wrapper">
+            <div class="feedback-card">
 
-                <div class="feedback-card">
+    <h3>Add Student Feedback</h3>
 
-                    <div class="card-heading">
+    <div class="row">
 
-                        <div class="feedback-icon">
-                            <i class="fa fa-comments"></i>
-                        </div>
+        <div class="col-md-6">
+            <label>Student Name</label>
+            <asp:TextBox ID="txtStudentName" runat="server"
+                CssClass="form-control"
+                placeholder="Enter student name">
+            </asp:TextBox>
+        </div>
 
-                        <h2>Give Your Feedback</h2>
+        <div class="col-md-6">
+            <label>Course Name</label>
+            <asp:TextBox ID="txtCourseName" runat="server"
+                CssClass="form-control"
+                placeholder="Enter course name">
+            </asp:TextBox>
+        </div>
 
-                        <p>
-                            Your experience helps us make LearnSphere better.
-                        </p>
+        <div class="col-md-6">
+            <label>Rating (1 to 5)</label>
+            <asp:TextBox ID="txtRating" runat="server"
+                TextMode="Number"
+                CssClass="form-control"
+                placeholder="Enter rating">
+            </asp:TextBox>
+        </div>
 
-                    </div>
+        <div class="col-md-6">
+            <label>Feedback</label>
+            <asp:TextBox ID="txtFeedback" runat="server"
+                CssClass="form-control"
+                placeholder="Enter feedback">
+            </asp:TextBox>
+        </div>
 
+    </div>
 
-                    <!-- COURSE -->
+    <asp:Button ID="btnSave" runat="server"
+        Text="Save Feedback"
+        CssClass="btn btn-success"
+        OnClick="btnSave_Click" />
 
-                    <div class="form-group">
+    <asp:Button ID="btnUpdate" runat="server"
+        Text="Update Feedback"
+        CssClass="btn btn-primary"
+        OnClick="btnUpdate_Click" />
 
-                        <label>
-                            <i class="fa fa-book"></i>
-                            Select Course
-                        </label>
+    <asp:Button ID="btnClear" runat="server"
+        Text="Clear"
+        CssClass="btn btn-secondary"
+        CausesValidation="false"
+        OnClick="btnClear_Click" />
 
-                        <select class="form-control">
+</div>
 
-                            <option>HTML & CSS</option>
+            <!-- Feedback Grid -->
 
-                            <option>ASP.NET Web Forms</option>
+            <div class="feedback-card">
 
-                            <option>Python Programming</option>
+                <div class="feedback-top">
 
-                            <option>Java Programming</option>
+                    <h3>Student Feedback</h3>
 
-                            <option>JavaScript</option>
-
-                            <option>Database Management</option>
-
-                        </select>
-
-                    </div>
-
-
-                    <!-- RATING -->
-
-                    <div class="form-group">
-
-                        <label>
-                            <i class="fa fa-star"></i>
-                            Rating
-                        </label>
-
-                        <select class="form-control">
-
-                            <option>⭐⭐⭐⭐⭐ Excellent</option>
-
-                            <option>⭐⭐⭐⭐ Very Good</option>
-
-                            <option>⭐⭐⭐ Good</option>
-
-                            <option>⭐⭐ Average</option>
-
-                            <option>⭐ Poor</option>
-
-                        </select>
-
-                    </div>
-
-
-                    <!-- FEEDBACK -->
-
-                    <div class="form-group">
-
-                        <label>
-                            <i class="fa fa-pencil"></i>
-                            Your Feedback
-                        </label>
-
-                        <textarea
-                            class="form-control"
-                            rows="6"
-                            placeholder="Write your feedback here..."></textarea>
-
-                    </div>
-
-
-                    <!-- SUBMIT -->
-
-                    <div class="submit-area">
-
-                        <a href="#" class="submit-btn">
-
-                            <i class="fa fa-paper-plane"></i>
-
-                            Submit Feedback
-
-                        </a>
-
-                    </div>
+                    <asp:Button ID="btnExport" runat="server"
+                        Text="Export Feedback"
+                        CssClass="btn btn-success"
+                        CausesValidation="false"
+                        OnClick="btnExport_Click" />
 
                 </div>
 
+                <asp:GridView ID="gvFeedback" runat="server"
+                    AutoGenerateColumns="False"
+                    CssClass="table table-bordered table-hover feedback-grid"
+                    GridLines="None"
+                    OnRowCommand="gvFeedback_RowCommand"
+                    EmptyDataText="No feedback found.">
+
+                    <Columns>
+
+                        <asp:TemplateField HeaderText="ID">
+                            <ItemTemplate>
+                                <asp:Label ID="lblID" runat="server"
+                                    Text='<%# Eval("ID") %>'>
+                                </asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+
+                        <asp:TemplateField HeaderText="Student Name">
+                            <ItemTemplate>
+                                <asp:Label ID="lblStudentName" runat="server"
+                                    Text='<%# Eval("StudentName") %>'>
+                                </asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+
+                        <asp:TemplateField HeaderText="Course">
+                            <ItemTemplate>
+                                <asp:Label ID="lblCourseName" runat="server"
+                                    Text='<%# Eval("CourseName") %>'>
+                                </asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+
+                        <asp:TemplateField HeaderText="Rating">
+                            <ItemTemplate>
+
+                                <asp:Label ID="lblRating" runat="server"
+                                    CssClass="rating"
+                                    Text='<%# Eval("Rating") %>'>
+                                </asp:Label>
+
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+
+                        <asp:TemplateField HeaderText="Feedback">
+                            <ItemTemplate>
+
+                                <asp:Label ID="lblFeedback" runat="server"
+                                    Text='<%# Eval("Feedback") %>'>
+                                </asp:Label>
+
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+
+                        <asp:TemplateField HeaderText="Action">
+                            <ItemTemplate>
+
+                                <asp:LinkButton ID="btnView" runat="server"
+                                    Text="View"
+                                    CommandName="cmd_view"
+                                    CommandArgument='<%# Eval("ID") %>'
+                                    CausesValidation="false"
+                                    CssClass="btn btn-primary btn-sm">
+                                </asp:LinkButton>
+
+                                <asp:LinkButton ID="btnDelete" runat="server"
+                                    Text="Delete"
+                                    CommandName="cmd_delete"
+                                    CommandArgument='<%# Eval("ID") %>'
+                                    CausesValidation="false"
+                                    CssClass="btn btn-danger btn-sm"
+                                    OnClientClick="return confirm('Are you sure you want to delete this feedback?');">
+                                </asp:LinkButton>
+
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                    </Columns>
+
+                </asp:GridView>
+
+                <asp:Label ID="lblMessage" runat="server"
+                    CssClass="feedback-message">
+                </asp:Label>
+
             </div>
 
-        </div>
 
-    </section>
-
-
-    <!-- ================= STUDENT REVIEWS ================= -->
-
-    <section class="reviews-section">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span class="small-title">
-                    Student Experiences
-                </span>
-
-                <h2>
-                    Student Reviews
-                </h2>
-
-                <p>
-                    Recent feedback from students who are learning with LearnSphere.
-                </p>
-
-            </div>
-
+            <!-- Feedback Statistics -->
 
             <div class="row">
 
+                <div class="col-md-6">
 
-                <!-- REVIEW 1 -->
+                    <div class="feedback-stat">
 
-                <div class="col-md-4 mb-4">
+                        <h3>Feedback Statistics</h3>
 
-                    <div class="review-card">
-
-                        <div class="review-top">
-
-                            <div class="student-info">
-
-                                <div class="student-avatar">
-                                    R
-                                </div>
-
-                                <h4>
-                                    Rahul Patel
-                                </h4>
-
-                            </div>
-
-                            <div class="rating">
-                                ⭐⭐⭐⭐⭐
-                            </div>
-
-                        </div>
-
-                        <p class="review-text">
-
-                            Excellent course with easy explanations.
-                            Highly recommended for beginners.
-
+                        <p>
+                            <strong>Total Feedback:</strong>
+                            <asp:Label ID="lblTotalFeedback" runat="server"
+                                Text="0">
+                            </asp:Label>
                         </p>
+
+                        <p>
+                            <strong>Average Rating:</strong>
+                            <asp:Label ID="lblAverageRating" runat="server"
+                                Text="0">
+                            </asp:Label>
+                            / 5
+                        </p>
+
+                        <p>
+                            <strong>5 Star Reviews:</strong>
+                            <asp:Label ID="lblFiveStar" runat="server"
+                                Text="0">
+                            </asp:Label>
+                        </p>
+
+                        <p>
+                            <strong>4 Star Reviews:</strong>
+                            <asp:Label ID="lblFourStar" runat="server"
+                                Text="0">
+                            </asp:Label>
+                        </p>
+
+                        <p>
+                            <strong>3 Star Reviews:</strong>
+                            <asp:Label ID="lblThreeStar" runat="server"
+                                Text="0">
+                            </asp:Label>
+                        </p>
+
+                        
 
                     </div>
 
                 </div>
 
 
-                <!-- REVIEW 2 -->
+                <!-- Quick Actions -->
 
-                <div class="col-md-4 mb-4">
+                <div class="col-md-6">
 
-                    <div class="review-card">
+                    <div class="feedback-actions">
 
-                        <div class="review-top">
+                        <h3>Quick Actions</h3>
 
-                            <div class="student-info">
+                        <asp:Button ID="btnManageUsers" runat="server"
+                            Text="Manage Users"
+                            CssClass="btn btn-success btn-block"
+                            CausesValidation="false"
+                            PostBackUrl="~/ManageUsers.aspx" />
 
-                                <div class="student-avatar">
-                                    P
-                                </div>
+                        <asp:Button ID="btnManageCourses" runat="server"
+                            Text="Manage Courses"
+                            CssClass="btn btn-info btn-block"
+                            CausesValidation="false"
+                            PostBackUrl="~/ManageCourses.aspx" />
 
-                                <h4>
-                                    Priya Shah
-                                </h4>
+                        <asp:Button ID="btnManageEnrollments" runat="server"
+                            Text="Manage Enrollments"
+                            CssClass="btn btn-warning btn-block"
+                            CausesValidation="false"
+                            PostBackUrl="~/ManageEnrollments.aspx" />
 
-                            </div>
-
-                            <div class="rating">
-                                ⭐⭐⭐⭐
-                            </div>
-
-                        </div>
-
-                        <p class="review-text">
-
-                            The video quality was excellent and
-                            assignments were very helpful.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- REVIEW 3 -->
-
-                <div class="col-md-4 mb-4">
-
-                    <div class="review-card">
-
-                        <div class="review-top">
-
-                            <div class="student-info">
-
-                                <div class="student-avatar">
-                                    M
-                                </div>
-
-                                <h4>
-                                    Meet Joshi
-                                </h4>
-
-                            </div>
-
-                            <div class="rating">
-                                ⭐⭐⭐⭐⭐
-                            </div>
-
-                        </div>
-
-                        <p class="review-text">
-
-                            One of the best online learning
-                            platforms I have used.
-
-                        </p>
+                        <asp:Button ID="btnDashboard" runat="server"
+                            Text="Go to Dashboard"
+                            CssClass="btn btn-secondary btn-block"
+                            CausesValidation="false"
+                            PostBackUrl="~/Dashboard.aspx" />
 
                     </div>
 
                 </div>
-
 
             </div>
 
         </div>
 
     </section>
-
-
-    <!-- ================= WHY FEEDBACK MATTERS ================= -->
-
-    <section class="why-section">
-
-        <div class="container">
-
-            <div class="why-card">
-
-                <div class="why-icon">
-                    <i class="fa fa-lightbulb-o"></i>
-                </div>
-
-                <h2>
-                    Why Your Feedback Matters
-                </h2>
-
-                <p>
-
-                    Your valuable feedback helps us improve course quality,
-                    enhance learning experience, and provide better educational
-                    content for future students.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</div>
 
 </asp:Content>

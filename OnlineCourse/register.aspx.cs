@@ -153,7 +153,7 @@ namespace OnlineCourse
 
             if (e.CommandName == "cmd_edt")
             {
-                int id = Convert.ToInt32(e.CommandArgument);
+                int id = Convert.ToInt16(e.CommandArgument);
 
                 ViewState["id"] = id;
 
@@ -161,7 +161,7 @@ namespace OnlineCourse
 
                 filldata();
             }
-            else if (e.CommandName == "cmd_dlt")
+            else
             {
                 getcon();
 
