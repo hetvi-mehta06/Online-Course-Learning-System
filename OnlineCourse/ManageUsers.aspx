@@ -1,7 +1,10 @@
+
 ﻿<%@ Page Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="OnlineCourse.ManageUsers" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
+
+<style>
 
 
     /* =========================================
@@ -137,8 +140,8 @@
                 #60a5fa
             );
 
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        
+        
     }
 
     .users-hero p {
@@ -686,6 +689,7 @@
     }
 
 
+
     /* Form styling added to preserve the original Add / Update / Clear form */
     .user-form-panel {
         margin-bottom: 30px;
@@ -812,11 +816,13 @@
     </style>
 </asp:Content>
 
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <div class="manage-users-page">
 
     <!-- Background Orbs -->
+
     <div class="user-orb one"></div>
     <div class="user-orb two"></div>
     <div class="user-orb three"></div>
@@ -974,88 +980,8 @@
                                 </asp:LinkButton>
 
                             </ItemTemplate>
-                        </asp:TemplateField>
 
-                    </Columns>
 
-                </asp:GridView>
-
-            </div>
-        </div>
-
-        <!-- Statistics and Quick Actions -->
-        <div class="row bottom-section">
-
-            <div class="col-md-6 mb-4">
-                <div class="user-info-card">
-                    <h3>User Statistics</h3>
-
-                    <div class="user-stat">
-                        <strong>Total Users</strong>
-                        <span><asp:Label ID="lblTotalUsers" runat="server" Text="0"></asp:Label></span>
-                    </div>
-
-                    <div class="user-stat">
-                        <strong>Active Users</strong>
-                        <span><asp:Label ID="lblActiveUsers" runat="server" Text="0"></asp:Label></span>
-                    </div>
-
-                    <div class="user-stat">
-                        <strong>Pending Users</strong>
-                        <span><asp:Label ID="lblPendingUsers" runat="server" Text="0"></asp:Label></span>
-                    </div>
-
-                    <div class="user-stat">
-                        <strong>Total Courses</strong>
-                        <span><asp:Label ID="lblCourses" runat="server" Text="0"></asp:Label></span>
-                    </div>
-
-                    <div class="user-stat">
-                        <strong>Certificates</strong>
-                        <span><asp:Label ID="lblCertificates" runat="server" Text="0"></asp:Label></span>
-                    </div>
-
-                    <asp:Button ID="btnAllUsers" runat="server"
-                        Text="View All Users"
-                        CssClass="view-users-btn"
-                        CausesValidation="false"
-                        OnClick="btnViewUsers_Click" />
-                </div>
-            </div>
-
-            <div class="col-md-6 mb-4">
-                <div class="user-info-card">
-                    <h3>Quick Actions</h3>
-
-                    <asp:Button ID="btnNewUser" runat="server"
-                        Text="Add New User"
-                        CssClass="quick-action new-user-action quick-action-button"
-                        CausesValidation="false"
-                        OnClick="btnClear_Click" />
-
-                    <asp:HyperLink ID="lnkCourses" runat="server"
-                        NavigateUrl="~/ManageCourses.aspx"
-                        CssClass="quick-action courses-action"
-                        Text="Manage Courses">
-                    </asp:HyperLink>
-
-                    <asp:HyperLink ID="lnkEnrollments" runat="server"
-                        NavigateUrl="~/ManageEnrollments.aspx"
-                        CssClass="quick-action enrollments-action"
-                        Text="Manage Enrollments">
-                    </asp:HyperLink>
-
-                    <asp:HyperLink ID="lnkFeedback" runat="server"
-                        NavigateUrl="~/ManageFeedback.aspx"
-                        CssClass="quick-action feedback-action"
-                        Text="View Feedback">
-                    </asp:HyperLink>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</div>
+  
 
 </asp:Content>

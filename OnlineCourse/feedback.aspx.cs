@@ -5,16 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 // add new namspace
 
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 
+
 namespace OnlineCourse
 {
     public partial class feedback : System.Web.UI.Page
     {
+
         SqlConnection con;
         SqlCommand cmd;
         SqlDataAdapter da;
@@ -96,5 +99,11 @@ namespace OnlineCourse
             clear();
             lblmsg.Text = "";
         }
+
+        //protected void Page_Load(object sender, EventArgs e)
+        //{
+
+        //}
+
     }
 }

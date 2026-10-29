@@ -5,16 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 // add new namspace
 
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 
+
 namespace OnlineCourse
 {
     public partial class enrollcourse : System.Web.UI.Page
     {
+
 
         SqlConnection con;
         SqlCommand cmd;
@@ -84,5 +87,12 @@ namespace OnlineCourse
 
             fillgrid();
         }
+
+
+        //protected void Page_Load(object sender, EventArgs e)
+        //{
+
+
+        //}
     }
 }

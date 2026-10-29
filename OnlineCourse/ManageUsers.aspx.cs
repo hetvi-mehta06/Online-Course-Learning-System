@@ -7,16 +7,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 // add new namspace
 
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 
+
 namespace OnlineCourse
 {
     public partial class ManageUsers : System.Web.UI.Page
     {
+
         SqlConnection con;
         SqlDataAdapter da;
         DataSet ds;

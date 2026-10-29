@@ -5,14 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 using System.Data.SqlClient; // for connection class
 using System.Data; // for dataset
 using System.Configuration; // for connection string 
+
+
 
 namespace OnlineCourse
 {
     public partial class Certificate : System.Web.UI.Page
     {
+
         SqlConnection con;
         SqlCommand cmd;
         SqlDataAdapter da;
@@ -51,5 +55,11 @@ namespace OnlineCourse
             }
         }
     }
-
 }
+
+
+    //    protected void Page_Load(object sender, EventArgs e)
+    //    {
+
+    //    }
+    //}

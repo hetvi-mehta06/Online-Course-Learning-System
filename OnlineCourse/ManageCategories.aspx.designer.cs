@@ -15,6 +15,18 @@ namespace OnlineCourse
     {
 
         /// <summary>
+
+
+        /// lblCategoryName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCategoryName;
+
+        /// <summary>
+
         /// txtCategoryName control.
         /// </summary>
         /// <remarks>
@@ -24,6 +36,18 @@ namespace OnlineCourse
         protected global::System.Web.UI.WebControls.TextBox txtCategoryName;
 
         /// <summary>
+
+
+        /// lblTotalCourses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalCourses;
+
+        /// <summary>
+
         /// txtTotalCourses control.
         /// </summary>
         /// <remarks>
@@ -33,6 +57,18 @@ namespace OnlineCourse
         protected global::System.Web.UI.WebControls.TextBox txtTotalCourses;
 
         /// <summary>
+
+
+        /// lblCategoryStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCategoryStatus;
+
+        /// <summary>
+
         /// ddlStatus control.
         /// </summary>
         /// <remarks>
@@ -94,5 +130,44 @@ namespace OnlineCourse
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvCategories;
+
+
+
+        /// <summary>
+        /// hlCourses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlCourses;
+
+        /// <summary>
+        /// hlVideos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlVideos;
+
+        /// <summary>
+        /// hlEnrollments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlEnrollments;
+
+        /// <summary>
+        /// hlFeedback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlFeedback;
+
     }
 }

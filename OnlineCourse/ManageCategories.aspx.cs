@@ -181,9 +181,11 @@ namespace OnlineCourse
             lblMessage.Text = "";
         }
 
+
         protected void gvCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
     }
 }

@@ -1,3 +1,4 @@
+
 ﻿
 <%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="ManageCategories.aspx.cs" Inherits="OnlineCourse.ManageCategories" %>
 
@@ -550,3 +551,365 @@
     </div>
 
 </asp:Content>
+
+
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+
+    <section class="hero-wrap hero-wrap-2"
+        style="background-image:url('images/bg_2.jpg');">
+
+        <div class="overlay"></div>
+
+        <div class="container">
+
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+
+                <div class="col-md-9 text-center pb-5">
+
+                    <h1 class="bread">
+                        Manage Categories
+                    </h1>
+
+                    <p class="breadcrumbs">
+                        Admin Panel / Manage Categories
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="category-page">
+
+        <div class="container">
+
+
+            <div class="category-form">
+
+                <h3>
+                    Add Course Category
+                </h3>
+
+
+                <div class="row">
+
+
+                    <div class="col-md-6">
+
+                        <asp:Label
+                            ID="lblCategoryName"
+                            runat="server"
+                            Text="Category Name"
+                            CssClass="category-label">
+                        </asp:Label>
+
+
+                        <asp:TextBox
+                            ID="txtCategoryName"
+                            runat="server"
+                            CssClass="category-input"
+                            placeholder="Enter category name">
+                        </asp:TextBox>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <asp:Label
+                            ID="lblTotalCourses"
+                            runat="server"
+                            Text="Total Courses"
+                            CssClass="category-label">
+                        </asp:Label>
+
+
+                        <asp:TextBox
+                            ID="txtTotalCourses"
+                            runat="server"
+                            Text="0"
+                            TextMode="Number"
+                            CssClass="category-input"
+                            placeholder="Enter total courses">
+                        </asp:TextBox>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <asp:Label
+                            ID="lblCategoryStatus"
+                            runat="server"
+                            Text="Status"
+                            CssClass="category-label">
+                        </asp:Label>
+
+
+                        <asp:DropDownList
+                            ID="ddlStatus"
+                            runat="server"
+                            CssClass="category-input">
+
+                            <asp:ListItem
+                                Text="Active"
+                                Value="Active">
+                            </asp:ListItem>
+
+                            <asp:ListItem
+                                Text="Inactive"
+                                Value="Inactive">
+                            </asp:ListItem>
+
+                        </asp:DropDownList>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="category-buttons">
+
+
+                    <asp:Button
+                        ID="btnSave"
+                        runat="server"
+                        Text="Save Category"
+                        CssClass="category-btn category-btn-save"
+                        OnClick="btnSave_Click" />
+
+
+                    <asp:Button
+                        ID="btnUpdate"
+                        runat="server"
+                        Text="Update Category"
+                        CssClass="category-btn category-btn-update"
+                        OnClick="btnUpdate_Click" />
+
+
+                    <asp:Button
+                        ID="btnClear"
+                        runat="server"
+                        Text="Clear"
+                        CssClass="category-btn category-btn-clear"
+                        CausesValidation="false"
+                        OnClick="btnClear_Click" />
+
+
+                </div>
+
+
+                <asp:Label
+                    ID="lblMessage"
+                    runat="server"
+                    CssClass="category-message">
+                </asp:Label>
+
+
+                <asp:TextBox
+                    ID="txtCategoryID"
+                    runat="server"
+                    Visible="false">
+                </asp:TextBox>
+
+
+            </div>
+
+
+
+            <div class="category-grid-card">
+
+                <h3 class="category-grid-title">
+                    Course Categories
+                </h3>
+
+
+                <div class="category-table-wrapper">
+
+
+                    <asp:GridView
+                        ID="gvCategories"
+                        runat="server"
+                        AutoGenerateColumns="False"
+                        CssClass="category-grid"
+                        GridLines="None"
+                        OnRowCommand="gvCategories_RowCommand">
+
+
+                        <Columns>
+
+
+                            <asp:TemplateField
+                                HeaderText="ID">
+
+                                <ItemTemplate>
+
+                                    <asp:Label
+                                        ID="lblID"
+                                        runat="server"
+                                        Text='<%# Eval("ID") %>'
+                                        CssClass="category-id">
+                                    </asp:Label>
+
+                                </ItemTemplate>
+
+                            </asp:TemplateField>
+
+
+                            <asp:TemplateField
+                                HeaderText="Category Name">
+
+                                <ItemTemplate>
+
+                                    <asp:Label
+                                        ID="lblCategoryNameGrid"
+                                        runat="server"
+                                        Text='<%# Eval("CategoryName") %>'
+                                        CssClass="category-name">
+                                    </asp:Label>
+
+                                </ItemTemplate>
+
+                            </asp:TemplateField>
+
+
+                            <asp:TemplateField
+                                HeaderText="Total Courses">
+
+                                <ItemTemplate>
+
+                                    <asp:Label
+                                        ID="lblTotalCoursesGrid"
+                                        runat="server"
+                                        Text='<%# Eval("TotalCourses") %>'
+                                        CssClass="category-total">
+                                    </asp:Label>
+
+                                </ItemTemplate>
+
+                            </asp:TemplateField>
+
+
+                            <asp:TemplateField
+                                HeaderText="Status">
+
+                                <ItemTemplate>
+
+                                    <asp:Label
+                                        ID="lblStatusGrid"
+                                        runat="server"
+                                        Text='<%# Eval("Status") %>'
+                                        CssClass="category-status">
+                                    </asp:Label>
+
+                                </ItemTemplate>
+
+                            </asp:TemplateField>
+
+
+                            <asp:TemplateField
+                                HeaderText="Action">
+
+                                <ItemTemplate>
+
+
+                                    <asp:LinkButton
+                                        ID="btnEdit"
+                                        runat="server"
+                                        Text="Edit"
+                                        CommandName="cmd_edit"
+                                        CommandArgument='<%# Eval("ID") %>'
+                                        CausesValidation="false"
+                                        CssClass="category-edit-btn">
+                                    </asp:LinkButton>
+
+
+                                    <asp:LinkButton
+                                        ID="btnDelete"
+                                        runat="server"
+                                        Text="Delete"
+                                        CommandName="cmd_delete"
+                                        CommandArgument='<%# Eval("ID") %>'
+                                        CausesValidation="false"
+                                        CssClass="category-delete-btn"
+                                        OnClientClick="return confirm('Are you sure you want to delete this category?');">
+                                    </asp:LinkButton>
+
+
+                                </ItemTemplate>
+
+                            </asp:TemplateField>
+
+
+                        </Columns>
+
+
+                    </asp:GridView>
+
+
+                </div>
+
+            </div>
+
+
+
+            <div class="category-quick-card">
+
+                <h3 class="category-quick-title">
+                    Quick Actions
+                </h3>
+
+
+                <asp:HyperLink
+                    ID="hlCourses"
+                    runat="server"
+                    NavigateUrl="~/ManageCourses.aspx"
+                    CssClass="quick-category-btn quick-courses"
+                    Text="Manage Courses">
+                </asp:HyperLink>
+
+
+                <asp:HyperLink
+                    ID="hlVideos"
+                    runat="server"
+                    NavigateUrl="~/ManageVideos.aspx"
+                    CssClass="quick-category-btn quick-videos"
+                    Text="Manage Videos">
+                </asp:HyperLink>
+
+
+                <asp:HyperLink
+                    ID="hlEnrollments"
+                    runat="server"
+                    NavigateUrl="~/ManageEnrollments.aspx"
+                    CssClass="quick-category-btn quick-enrollments"
+                    Text="Manage Enrollments">
+                </asp:HyperLink>
+
+
+                <asp:HyperLink
+                    ID="hlFeedback"
+                    runat="server"
+                    NavigateUrl="~/ManageFeedback.aspx"
+                    CssClass="quick-category-btn quick-feedback"
+                    Text="View Feedback">
+                </asp:HyperLink>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</asp:Content>
+

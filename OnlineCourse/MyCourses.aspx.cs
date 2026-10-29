@@ -15,6 +15,7 @@ namespace OnlineCourse
 {
     public partial class MyCourses : System.Web.UI.Page
     {
+
         SqlConnection con; // for connection class
         SqlDataAdapter da; // for container
         DataSet ds; // for select

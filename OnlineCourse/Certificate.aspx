@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Student.Master" AutoEventWireup="true" CodeBehind="Certificate.aspx.cs" Inherits="OnlineCourse.Certificate" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
- <style>
+<style>
 
 /* =========================================================
    LUXURY CERTIFICATE EXPERIENCE
@@ -799,6 +801,7 @@
    ========================================================= */
 
 .lux-buttons {
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -807,6 +810,10 @@
     margin: 35px auto 0;
     flex-wrap: wrap;
 }
+
+
+   
+
 .lux-btn {
 
     display: inline-block;
@@ -1278,6 +1285,7 @@
 
 
 
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -1322,10 +1330,146 @@
             <asp:Panel ID="pnlCertificate" runat="server" CssClass="lux-certificate">
 
                 <div class="gold-frame"></div>
+
+</asp:Content>
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+<div class="lux-cert">
+
+    <!-- Ambient background -->
+    <div class="ambient one"></div>
+    <div class="ambient two"></div>
+
+
+    <!-- =====================================================
+         FIREWORK CELEBRATION
+         ===================================================== -->
+
+    <div class="fireworks">
+
+        <div class="firework left">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div class="firework right">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div class="firework center">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- Gold particles -->
+
+    <div class="gold-dust">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="lux-hero">
+
+        <div class="lux-hero-content">
+
+            <div class="lux-small-title">
+                LearnSphere Academy
+            </div>
+
+            <h1>
+                Course Certificate
+            </h1>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CERTIFICATE
+         ===================================================== -->
+
+    <section class="lux-stage">
+
+        <div class="container">
+
+            <div class="lux-certificate">
+
+
+                <!-- Frames -->
+
+                <div class="gold-frame"></div>
+
+
+                <!-- Corner ornaments -->
+
+
                 <div class="ornament tl"></div>
                 <div class="ornament tr"></div>
                 <div class="ornament bl"></div>
                 <div class="ornament br"></div>
+
 
                 <div class="lux-content" id="certificatePrint">
 
@@ -1396,3 +1540,159 @@
     </section>
 
 </asp:Content>
+
+
+                <div class="lux-content">
+
+
+                    <!-- Academy -->
+
+                    <div class="lux-academy">
+                        LearnSphere Academy
+                    </div>
+
+
+                    <!-- Title -->
+
+                    <div class="lux-title">
+                        Certificate
+                    </div>
+
+
+                    <div class="lux-subtitle">
+                        of Completion
+                    </div>
+
+
+                    <!-- Presented -->
+
+                    <div class="lux-presented">
+                        This Certificate is proudly presented to
+                    </div>
+
+
+                    <!-- Student -->
+
+                    <div class="lux-student">
+                        Vaibhavi Raiyani
+                    </div>
+
+
+                    <!-- Course -->
+
+                    <div class="lux-course-label">
+                        For Successfully Completing the Course
+                    </div>
+
+
+                    <div class="lux-course">
+                        ASP.NET Web Forms
+                    </div>
+
+
+                    <!-- Gold divider -->
+
+                    <div class="lux-divider"></div>
+
+
+                    <!-- Medal -->
+
+                    <div class="medallion">
+
+                        <i class="fa fa-trophy"></i>
+
+                        <span>
+                            VERIFIED
+                        </span>
+
+                    </div>
+
+
+                    <!-- Details -->
+
+                    <div class="lux-details">
+
+                        <p>
+                            <strong>Instructor :</strong>
+                            Tony Garret
+                        </p>
+
+                        <p>
+                            <strong>Completion Date :</strong>
+                            25 July 2026
+                        </p>
+
+                        <p>
+                            <strong>Certificate ID :</strong>
+                            LS20260001
+                        </p>
+
+                    </div>
+
+
+                    <!-- Signatures -->
+
+                    <div class="row lux-signatures">
+
+                        <div class="col-md-6">
+
+                            <div class="signature-line"></div>
+
+                            <div class="signature-title">
+                                Instructor Signature
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="signature-line"></div>
+
+                            <div class="signature-title">
+                                Director Signature
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+
+                    <div class="lux-buttons">
+
+                        <a href="#"
+                           class="lux-btn download-btn">
+
+                            <i class="fa fa-download"></i>
+
+                            &nbsp; Download PDF
+
+                        </a>
+
+
+                        <a href="MyCourses.aspx"
+                           class="lux-btn back-btn">
+
+                            <i class="fa fa-arrow-left"></i>
+
+                            &nbsp; Back to My Courses
+
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</asp:Content>
+
