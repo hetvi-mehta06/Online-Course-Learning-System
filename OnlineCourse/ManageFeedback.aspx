@@ -1,4 +1,4 @@
-﻿```aspx
+﻿
 <%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="ManageFeedback.aspx.cs" Inherits="OnlineCourse.ManageFeedback" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

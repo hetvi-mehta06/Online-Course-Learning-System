@@ -1,11 +1,8 @@
-
-﻿<%@ Page Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="OnlineCourse.ManageUsers" %>
-
+<%@ Page Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="OnlineCourse.ManageUsers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 <style>
-
 
     /* =========================================
        MAIN PAGE
@@ -139,9 +136,6 @@
                 #c4b5fd,
                 #60a5fa
             );
-
-        
-        
     }
 
     .users-hero p {
@@ -688,9 +682,8 @@
 
     }
 
-
-
     /* Form styling added to preserve the original Add / Update / Clear form */
+
     .user-form-panel {
         margin-bottom: 30px;
     }
@@ -799,6 +792,7 @@
     }
 
     @media (max-width: 767px) {
+
         .user-form-panel {
             padding: 18px;
         }
@@ -811,9 +805,11 @@
             width: 100%;
             margin-right: 0;
         }
+
     }
 
-    </style>
+</style>
+
 </asp:Content>
 
 
@@ -828,6 +824,7 @@
     <div class="user-orb three"></div>
 
     <!-- Hero -->
+
     <div class="users-hero">
         <h1>Manage Users</h1>
         <p>Admin Panel / Manage Users</p>
@@ -836,6 +833,7 @@
     <div class="users-container">
 
         <!-- Add / Update User Form -->
+
         <div class="users-panel user-form-panel">
 
             <div class="users-header">
@@ -849,6 +847,7 @@
 
                 <div class="col-md-6 mb-3">
                     <asp:Label ID="lblName" runat="server" Text="Name"></asp:Label>
+
                     <asp:TextBox ID="txtName" runat="server"
                         CssClass="form-control"
                         placeholder="Enter user name">
@@ -857,6 +856,7 @@
 
                 <div class="col-md-6 mb-3">
                     <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
+
                     <asp:TextBox ID="txtEmail" runat="server"
                         TextMode="Email"
                         CssClass="form-control"
@@ -866,6 +866,7 @@
 
                 <div class="col-md-6 mb-3">
                     <asp:Label ID="lblCourse" runat="server" Text="Course"></asp:Label>
+
                     <asp:TextBox ID="txtCourse" runat="server"
                         CssClass="form-control"
                         placeholder="Enter course">
@@ -874,6 +875,7 @@
 
                 <div class="col-md-6 mb-3">
                     <asp:Label ID="lblStatus" runat="server" Text="Status"></asp:Label>
+
                     <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control">
                         <asp:ListItem Text="Active" Value="Active"></asp:ListItem>
                         <asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
@@ -906,6 +908,7 @@
         </div>
 
         <!-- Registered Users Grid -->
+
         <div class="users-panel">
 
             <div class="users-header">
@@ -933,23 +936,33 @@
                     <Columns>
 
                         <asp:TemplateField HeaderText="ID">
-                            <ItemTemplate><%# Eval("ID") %></ItemTemplate>
+                            <ItemTemplate>
+                                <%# Eval("ID") %>
+                            </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Name">
-                            <ItemTemplate><%# Eval("Name") %></ItemTemplate>
+                            <ItemTemplate>
+                                <%# Eval("Name") %>
+                            </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Email">
-                            <ItemTemplate><%# Eval("Email") %></ItemTemplate>
+                            <ItemTemplate>
+                                <%# Eval("Email") %>
+                            </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Course">
-                            <ItemTemplate><%# Eval("Course") %></ItemTemplate>
+                            <ItemTemplate>
+                                <%# Eval("Course") %>
+                            </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Status">
-                            <ItemTemplate><%# Eval("Status") %></ItemTemplate>
+                            <ItemTemplate>
+                                <%# Eval("Status") %>
+                            </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Action">
@@ -980,8 +993,18 @@
                                 </asp:LinkButton>
 
                             </ItemTemplate>
+                        </asp:TemplateField>
 
+                    </Columns>
 
-  
+                </asp:GridView>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 </asp:Content>

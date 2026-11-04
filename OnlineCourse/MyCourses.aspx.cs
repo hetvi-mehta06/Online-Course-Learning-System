@@ -32,6 +32,7 @@ namespace OnlineCourse
             getcon();
 
             da = new SqlDataAdapter("select ID, CourseName, CategoryID, Price, Status from Course_tbl", con);
+
             ds = new DataSet();
             da.Fill(ds);
 
@@ -49,11 +50,22 @@ namespace OnlineCourse
 
             con.Close();
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 fillgrid();
+            }
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Certificate")
+            {
+                Session["CourseID"] = e.CommandArgument.ToString();
+
+                Response.Redirect("Certificate.aspx");
             }
         }
     }

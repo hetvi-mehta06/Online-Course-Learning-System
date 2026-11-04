@@ -1076,6 +1076,79 @@
 
 }
 
+.selected-course-box {
+    margin-top: 55px;
+    padding: 35px;
+    border-radius: 23px;
+    background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+    border: 1px solid rgba(137,98,255,.35);
+    box-shadow: 0 20px 45px rgba(0,0,0,.40);
+    animation: cardEntry .6s ease both;
+}
+
+.selected-course-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.selected-course-heading h2 {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 750;
+    margin-top: 10px;
+}
+
+.selected-course-info,
+.selected-course-video {
+    height: 100%;
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(10,7,32,.65);
+    border: 1px solid rgba(255,255,255,.10);
+}
+
+.selected-course-info h3,
+.selected-course-video h3 {
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.selected-course-info p,
+.selected-course-info li {
+    color: #c7c2d8;
+    line-height: 1.9;
+}
+
+.selected-course-info strong {
+    color: #ffffff;
+}
+
+.selected-course-info ul {
+    padding-left: 20px;
+}
+
+.selected-course-info li {
+    margin-bottom: 8px;
+}
+
+.selected-course-video .course-video {
+    margin-top: 15px;
+}
+
+@media (max-width: 767px) {
+    .selected-course-box {
+        padding: 20px;
+        margin-top: 35px;
+    }
+
+    .selected-course-info,
+    .selected-course-video {
+        margin-bottom: 20px;
+    }
+}
+
 </style>
 
 </asp:Content>
@@ -1085,511 +1158,224 @@
 
 <div class="courses-page">
 
-
-    <!-- =================================================
-         HERO
-    ================================================== -->
-
+    <!-- HERO -->
     <section class="courses-hero">
-
         <div class="container">
-
             <div class="courses-hero-content">
-
                 <div class="courses-breadcrumb">
-
                     <span>
-                        <a href="index.aspx">
-                            Home
+                        <a href="index.aspx">Home
                             <i class="fa fa-chevron-right"></i>
                         </a>
                     </span>
-
                     <span>
                         Courses
                         <i class="fa fa-chevron-right"></i>
                     </span>
-
                 </div>
 
-                <h1 class="courses-title">
-                    Explore Courses
-                </h1>
-
+                <h1 class="courses-title">Explore Courses</h1>
             </div>
-
         </div>
-
     </section>
 
-
-    <!-- =================================================
-         COURSE CONTENT
-    ================================================== -->
-
+    <!-- COURSE CONTENT -->
     <section class="courses-content">
-
         <div class="container">
-
             <div class="row">
 
-
-                <!-- =========================================
-                     SIDEBAR
-                ========================================== -->
-
+                <!-- SIDEBAR -->
                 <div class="col-lg-3">
-
                     <div class="course-sidebar">
 
-
-                        <!-- SEARCH -->
-
                         <div class="course-filter-card">
-
                             <div class="course-search">
-
-                                <input
-                                    type="text"
-                                    class="course-search-input"
+                                <input type="text" class="course-search-input"
                                     placeholder="Search Course" />
-
                                 <span class="fa fa-search course-search-icon"></span>
-
                             </div>
 
-                            <button
-                                type="button"
-                                class="course-search-btn">
-
+                            <button type="button" class="course-search-btn">
                                 <span class="fa fa-search"></span>
-
                                 &nbsp; Search
-
                             </button>
-
                         </div>
 
-
-                        <!-- CATEGORY -->
-
                         <div class="course-filter-card">
-
-                            <h3 class="filter-title">
-                                Course Category
-                            </h3>
-
+                            <h3 class="filter-title">Course Category</h3>
 
                             <label class="filter-option">
-                                <input type="checkbox" checked />
-                                Web Development
+                                <input type="checkbox" checked /> Web Development
                             </label>
-
-
                             <label class="filter-option">
-                                <input type="checkbox" />
-                                Programming
+                                <input type="checkbox" /> Programming
                             </label>
-
-
                             <label class="filter-option">
-                                <input type="checkbox" />
-                                Database
+                                <input type="checkbox" /> Database
                             </label>
-
-
                             <label class="filter-option">
-                                <input type="checkbox" />
-                                Cyber Security
+                                <input type="checkbox" /> Cyber Security
                             </label>
-
-
                             <label class="filter-option">
-                                <input type="checkbox" />
-                                Artificial Intelligence
+                                <input type="checkbox" /> Artificial Intelligence
                             </label>
-
-
                             <label class="filter-option">
-                                <input type="checkbox" />
-                                Data Science
+                                <input type="checkbox" /> Data Science
                             </label>
-
                         </div>
 
-
-                        <!-- LEVEL -->
-
                         <div class="course-filter-card">
-
-                            <h3 class="filter-title">
-                                Level
-                            </h3>
-
+                            <h3 class="filter-title">Level</h3>
 
                             <label class="filter-option">
-                                <input type="checkbox" />
-                                Beginner
+                                <input type="checkbox" /> Beginner
                             </label>
-
-
                             <label class="filter-option">
-                                <input type="checkbox" />
-                                Intermediate
+                                <input type="checkbox" /> Intermediate
                             </label>
-
-
                             <label class="filter-option">
-                                <input type="checkbox" />
-                                Advanced
+                                <input type="checkbox" /> Advanced
                             </label>
-
                         </div>
 
                     </div>
-
                 </div>
 
-
-                <!-- =========================================
-                     COURSES
-                ========================================== -->
-
+                <!-- COURSE CARDS -->
                 <div class="col-lg-9">
 
                     <div class="course-grid">
 
+                        <asp:Repeater ID="rptCourses" runat="server"
+                            OnItemCommand="rptCourses_ItemCommand">
 
-                        <!-- COURSE 1 -->
+                            <ItemTemplate>
 
-                        <div class="course-card">
+                                <div class="course-card">
 
-                            <a
-                                href="CourseDetails.aspx?course=html"
-                                class="course-image"
-                                style="background-image: url(images/work-1.jpg);">
+                                    <asp:LinkButton ID="btnCourseImage" runat="server"
+                                        CssClass="course-image"
+                                        CommandName="details"
+                                        CommandArgument='<%# Eval("ID") %>'
+                                        CausesValidation="false"
+                                        Style="background-image: url('images/work-1.jpg');">
 
-                                <span class="course-badge">
-                                    Web Development
-                                </span>
+                                        <span class="course-badge">
+                                            <%# Eval("CategoryID") %>
+                                        </span>
 
-                            </a>
+                                    </asp:LinkButton>
 
-                            <div class="course-details">
+                                    <div class="course-details">
 
-                                <h3 class="course-title">
+                                        <h3 class="course-title">
+                                            <asp:LinkButton ID="btnCourseName" runat="server"
+                                                Text='<%# Eval("CourseName") %>'
+                                                CommandName="details"
+                                                CommandArgument='<%# Eval("ID") %>'
+                                                CausesValidation="false">
+                                            </asp:LinkButton>
+                                        </h3>
 
-                                    <a href="CourseDetails.aspx?course=html">
-                                        HTML &amp; CSS
-                                    </a>
+                                        <ul class="course-meta">
+                                            <li>
+                                                <i class="fa fa-book"></i> Course
+                                            </li>
 
-                                </h3>
+                                            <li class="course-price">
+                                                ₹<%# Eval("Price") %>
+                                            </li>
+                                        </ul>
 
-                                <p class="course-instructor">
-                                    Instructor
-                                    <span>Tony Garret</span>
-                                </p>
+                                    </div>
+                                </div>
 
-                                <ul class="course-meta">
+                            </ItemTemplate>
 
-                                    <li>
-                                        <i class="fa fa-users"></i>
-                                        2300 Students
-                                    </li>
-
-                                    <li class="course-price">
-                                        ₹199
-                                    </li>
-
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- COURSE 2 -->
-
-                        <div class="course-card">
-
-                            <a
-                                href="CourseDetails.aspx?course=aspnet"
-                                class="course-image"
-                                style="background-image: url(images/work-2.jpg);">
-
-                                <span class="course-badge">
-                                    Web Development
-                                </span>
-
-                            </a>
-
-                            <div class="course-details">
-
-                                <h3 class="course-title">
-
-                                    <a href="CourseDetails.aspx?course=aspnet">
-                                        ASP.NET Web Forms
-                                    </a>
-
-                                </h3>
-
-                                <p class="course-instructor">
-                                    Instructor
-                                    <span>Tony Garret</span>
-                                </p>
-
-                                <ul class="course-meta">
-
-                                    <li>
-                                        <i class="fa fa-users"></i>
-                                        1850 Students
-                                    </li>
-
-                                    <li class="course-price">
-                                        ₹299
-                                    </li>
-
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- COURSE 3 -->
-
-                        <div class="course-card">
-
-                            <a
-                                href="CourseDetails.aspx?course=python"
-                                class="course-image"
-                                style="background-image: url(images/work-3.jpg);">
-
-                                <span class="course-badge">
-                                    Programming
-                                </span>
-
-                            </a>
-
-                            <div class="course-details">
-
-                                <h3 class="course-title">
-
-                                    <a href="CourseDetails.aspx?course=python">
-                                        Python Programming
-                                    </a>
-
-                                </h3>
-
-                                <p class="course-instructor">
-                                    Instructor
-                                    <span>Tony Garret</span>
-                                </p>
-
-                                <ul class="course-meta">
-
-                                    <li>
-                                        <i class="fa fa-users"></i>
-                                        2000 Students
-                                    </li>
-
-                                    <li class="course-price">
-                                        ₹249
-                                    </li>
-
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- COURSE 4 -->
-
-                        <div class="course-card">
-
-                            <a
-                                href="CourseDetails.aspx?course=java"
-                                class="course-image"
-                                style="background-image: url(images/work-4.jpg);">
-
-                                <span class="course-badge">
-                                    Programming
-                                </span>
-
-                            </a>
-
-                            <div class="course-details">
-
-                                <h3 class="course-title">
-
-                                    <a href="CourseDetails.aspx?course=java">
-                                        Java Programming
-                                    </a>
-
-                                </h3>
-
-                                <p class="course-instructor">
-                                    Instructor
-                                    <span>Tony Garret</span>
-                                </p>
-
-                                <ul class="course-meta">
-
-                                    <li>
-                                        <i class="fa fa-users"></i>
-                                        2100 Students
-                                    </li>
-
-                                    <li class="course-price">
-                                        ₹249
-                                    </li>
-
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- COURSE 5 -->
-
-                        <div class="course-card">
-
-                            <a
-                                href="CourseDetails.aspx?course=javascript"
-                                class="course-image"
-                                style="background-image: url(images/work-5.jpg);">
-
-                                <span class="course-badge">
-                                    Programming
-                                </span>
-
-                            </a>
-
-                            <div class="course-details">
-
-                                <h3 class="course-title">
-
-                                    <a href="CourseDetails.aspx?course=javascript">
-                                        JavaScript
-                                    </a>
-
-                                </h3>
-
-                                <p class="course-instructor">
-                                    Instructor
-                                    <span>Tony Garret</span>
-                                </p>
-
-                                <ul class="course-meta">
-
-                                    <li>
-                                        <i class="fa fa-users"></i>
-                                        1900 Students
-                                    </li>
-
-                                    <li class="course-price">
-                                        ₹199
-                                    </li>
-
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- COURSE 6 -->
-
-                        <div class="course-card">
-
-                            <a
-                                href="CourseDetails.aspx?course=database"
-                                class="course-image"
-                                style="background-image: url(images/work-6.jpg);">
-
-                                <span class="course-badge">
-                                    Database
-                                </span>
-
-                            </a>
-
-                            <div class="course-details">
-
-                                <h3 class="course-title">
-
-                                    <a href="CourseDetails.aspx?course=database">
-                                        Database Management
-                                    </a>
-
-                                </h3>
-
-                                <p class="course-instructor">
-                                    Instructor
-                                    <span>Tony Garret</span>
-                                </p>
-
-                                <ul class="course-meta">
-
-                                    <li>
-                                        <i class="fa fa-users"></i>
-                                        1750 Students
-                                    </li>
-
-                                    <li class="course-price">
-                                        ₹199
-                                    </li>
-
-                                </ul>
-
-                            </div>
-
-                        </div>
-
+                        </asp:Repeater>
 
                     </div>
-
-
-                    <!-- =====================================
-                         PAGINATION
-                    ====================================== -->
-
-                    <div class="course-pagination">
-
-                        <ul>
-
-                            <li>
-                                <a href="#">&lt;</a>
-                            </li>
-
-                            <li class="active">
-                                <span>1</span>
-                            </li>
-
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-
-                            <li>
-                                <a href="#">&gt;</a>
-                            </li>
-
-                        </ul>
-
-                    </div>
-
 
                 </div>
 
             </div>
 
-        </div>
+            <!-- SELECTED COURSE DETAILS -->
+            <asp:Panel ID="pnlCourseDetails" runat="server" Visible="false">
 
+                <div class="selected-course-box">
+
+                    <div class="selected-course-heading">
+                        <span class="section-label">COURSE DETAILS</span>
+
+                        <h2>
+                            <asp:Label ID="lblSelectedCourse" runat="server"></asp:Label>
+                        </h2>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-7">
+                            <div class="selected-course-info">
+
+                                <h3>Course Information</h3>
+
+                                <p>
+                                    <strong>Category ID :</strong>
+                                    <asp:Label ID="lblCategory" runat="server"></asp:Label>
+                                </p>
+
+                                <p>
+                                    <strong>Status :</strong>
+                                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                                </p>
+
+                                <p>
+                                    <strong>Price :</strong>
+                                    <asp:Label ID="lblPrice" runat="server"></asp:Label>
+                                </p>
+
+                                <hr />
+
+                                <h3>What You'll Learn</h3>
+
+                                <ul>
+                                    <li>Basic Concepts</li>
+                                    <li>Important Topics</li>
+                                    <li>Practical Knowledge</li>
+                                    <li>Examples and Project Work</li>
+                                </ul>
+
+                                <a href="enrollcourse.aspx" class="btn btn-primary enroll-btn">
+                                    Enroll Now
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <div class="selected-course-video">
+
+                                <h3>Course Video</h3>
+
+                                <div class="course-video">
+                                    <iframe id="courseVideo" runat="server"
+                                        width="100%" height="280"
+                                        frameborder="0"
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </asp:Panel>
+
+        </div>
     </section>
 
 </div>

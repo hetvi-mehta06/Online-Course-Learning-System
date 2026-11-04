@@ -497,6 +497,15 @@
                     </a>
                 </li>
 
+                 <li>
+                    <a href="MyNotes.aspx">
+                        My Notes
+                   </a>
+
+                     
+
+                 </li>
+
                 <li>
                     <a href="enrollcourse.aspx">
                         Enroll Course

@@ -1,13 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Public.Master" AutoEventWireup="true" CodeBehind="CourseDetails.aspx.cs" Inherits="OnlineCourse.CourseDetails" %>
+﻿
+<%@ Page Title="" Language="C#" MasterPageFile="~/Public.Master" AutoEventWireup="true" CodeBehind="CourseDetails.aspx.cs" Inherits="OnlineCourse.CourseDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 <style>
 
-/* ================================
-   LEARNSPHERE COURSE DETAILS
-   PREMIUM DARK GLASSMORPHISM
-================================ */
+/* LEARNSPHERE COURSE DETAILS */
 
 .course-details-page {
     position: relative;
@@ -21,7 +19,6 @@
     color: #e9eaff;
 }
 
-/* Background glowing circles */
 .course-details-page::before,
 .course-details-page::after {
     content: "";
@@ -53,16 +50,12 @@
     0%,100% {
         transform: translate3d(0,0,0) scale(1);
     }
-
     50% {
         transform: translate3d(25px,-25px,0) scale(1.08);
     }
 }
 
-
-/* ================================
-   HERO
-================================ */
+/* HERO */
 
 .course-hero {
     position: relative;
@@ -98,7 +91,6 @@
         opacity: 0;
         transform: translateY(35px) scale(.97);
     }
-
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -130,14 +122,10 @@
     font-weight: 800;
     letter-spacing: -1px;
     color: #ffffff;
-    text-shadow:
-        0 5px 25px rgba(124,58,237,.45);
+    text-shadow: 0 5px 25px rgba(124,58,237,.45);
 }
 
-
-/* ================================
-   MAIN SECTION
-================================ */
+/* MAIN SECTION */
 
 .course-content-section {
     position: relative;
@@ -145,10 +133,7 @@
     padding: 80px 0;
 }
 
-
-/* ================================
-   LEFT COURSE CARD
-================================ */
+/* LEFT COURSE CARD */
 
 .course-main-card {
     padding: 35px;
@@ -157,28 +142,17 @@
     border: 1px solid rgba(139,92,246,.30);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-
     box-shadow:
         0 25px 70px rgba(0,0,0,.35),
         inset 0 1px 0 rgba(255,255,255,.06);
-
     transform: translateZ(0);
-    transition:
-        transform .45s ease,
-        box-shadow .45s ease,
-        border-color .45s ease;
-
+    transition: transform .45s ease, box-shadow .45s ease, border-color .45s ease;
     animation: cardEntry .8s ease both;
 }
 
 .course-main-card:hover {
-    transform:
-        perspective(1000px)
-        translateY(-8px)
-        rotateX(1deg);
-
+    transform: perspective(1000px) translateY(-8px) rotateX(1deg);
     border-color: rgba(139,92,246,.65);
-
     box-shadow:
         0 35px 90px rgba(0,0,0,.48),
         0 0 35px rgba(124,58,237,.12);
@@ -189,33 +163,30 @@
         opacity: 0;
         transform: translateY(30px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-
-/* ================================
-   COURSE IMAGE
-================================ */
+/* COURSE IMAGE */
 
 .course-image-wrapper {
     position: relative;
     overflow: hidden;
+    width: 75%;
+    height: 350px;
+    margin: 0 auto 30px;
     border-radius: 18px;
-    margin-bottom: 30px;
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.35);
+    box-shadow: 0 20px 45px rgba(0,0,0,.35);
 }
 
 .course-image-wrapper img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    transition:
-        transform .7s ease,
-        filter .7s ease;
+    transition: transform .7s ease, filter .7s ease;
 }
 
 .course-image-wrapper::after {
@@ -229,7 +200,6 @@
             rgba(255,255,255,.13) 50%,
             transparent 70%
         );
-
     transform: translateX(-120%);
     transition: transform .8s ease;
 }
@@ -243,10 +213,7 @@
     transform: translateX(120%);
 }
 
-
-/* ================================
-   TEXT
-================================ */
+/* TEXT */
 
 .course-main-card h2,
 .course-main-card h3 {
@@ -275,10 +242,7 @@
     margin: 30px 0;
 }
 
-
-/* ================================
-   LEARNING LIST
-================================ */
+/* LEARNING LIST */
 
 .course-main-card ul,
 .course-main-card ol {
@@ -289,9 +253,7 @@
     color: #cfd2e9;
     margin-bottom: 12px;
     line-height: 1.6;
-    transition:
-        transform .25s ease,
-        color .25s ease;
+    transition: transform .25s ease, color .25s ease;
 }
 
 .course-main-card li:hover {
@@ -299,17 +261,13 @@
     transform: translateX(6px);
 }
 
-
-/* ================================
-   VIDEO
-================================ */
+/* VIDEO */
 
 .course-video {
     overflow: hidden;
     border-radius: 18px;
     border: 1px solid rgba(139,92,246,.25);
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.35);
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
 }
 
 .course-video iframe {
@@ -318,50 +276,27 @@
     border: 0;
 }
 
-
-/* ================================
-   RIGHT COURSE INFORMATION
-================================ */
+/* RIGHT COURSE INFORMATION */
 
 .course-info-card {
     position: sticky;
     top: 30px;
-
     padding: 30px;
     border-radius: 24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(31,25,72,.82),
-            rgba(14,22,55,.82)
-        );
-
+    background: linear-gradient(145deg, rgba(31,25,72,.82), rgba(14,22,55,.82));
     border: 1px solid rgba(139,92,246,.38);
-
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-
     box-shadow:
         0 25px 70px rgba(0,0,0,.40),
         inset 0 1px 0 rgba(255,255,255,.07);
-
-    transition:
-        transform .45s ease,
-        box-shadow .45s ease,
-        border-color .45s ease;
-
+    transition: transform .45s ease, box-shadow .45s ease, border-color .45s ease;
     animation: sideCardEntry 1s ease both;
 }
 
 .course-info-card:hover {
-    transform:
-        perspective(1000px)
-        translateY(-8px)
-        rotateY(-2deg);
-
+    transform: perspective(1000px) translateY(-8px) rotateY(-2deg);
     border-color: rgba(96,165,250,.55);
-
     box-shadow:
         0 35px 80px rgba(0,0,0,.48),
         0 0 35px rgba(59,130,246,.13);
@@ -372,7 +307,6 @@
         opacity: 0;
         transform: translateX(35px);
     }
-
     to {
         opacity: 1;
         transform: translateX(0);
@@ -402,38 +336,21 @@
     color: #a78bfa;
 }
 
-
-/* ================================
-   ENROLL BUTTON
-================================ */
+/* ENROLL BUTTON */
 
 .enroll-btn {
     position: relative;
     overflow: hidden;
     margin-top: 18px;
     padding: 14px 20px !important;
-
     border: 0 !important;
     border-radius: 13px !important;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7c3aed,
-            #4f46e5,
-            #2563eb
-        ) !important;
-
+    background: linear-gradient(135deg, #7c3aed, #4f46e5, #2563eb) !important;
     color: #ffffff !important;
     font-weight: 700 !important;
     letter-spacing: .3px;
-
-    box-shadow:
-        0 12px 30px rgba(79,70,229,.35);
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
+    box-shadow: 0 12px 30px rgba(79,70,229,.35);
+    transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .enroll-btn::before {
@@ -443,47 +360,29 @@
     left: -120%;
     width: 80%;
     height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.30),
-            transparent
-        );
-
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.30), transparent);
     transform: skewX(-20deg);
     transition: left .6s ease;
 }
 
 .enroll-btn:hover {
-    transform:
-        translateY(-4px)
-        scale(1.02);
-
-    box-shadow:
-        0 18px 40px rgba(79,70,229,.50);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(79,70,229,.50);
 }
 
 .enroll-btn:hover::before {
     left: 140%;
 }
 
-
-/* ================================
-   SECTION GLOW
-================================ */
+/* SECTION GLOW */
 
 .section-label {
     display: inline-block;
     padding: 7px 14px;
     margin-bottom: 15px;
-
     border-radius: 30px;
-
     background: rgba(124,58,237,.13);
     border: 1px solid rgba(139,92,246,.25);
-
     color: #a78bfa;
     font-size: 12px;
     font-weight: 700;
@@ -491,13 +390,9 @@
     letter-spacing: 1px;
 }
 
-
-/* ================================
-   RESPONSIVE
-================================ */
+/* RESPONSIVE */
 
 @media (max-width: 991px) {
-
     .course-main-title {
         font-size: 38px;
     }
@@ -514,7 +409,6 @@
 }
 
 @media (max-width: 575px) {
-
     .course-hero {
         min-height: 330px;
     }
@@ -532,19 +426,20 @@
         border-radius: 18px;
     }
 
+    .course-image-wrapper {
+        width: 100%;
+        height: 220px;
+    }
+
     .course-info-card {
         padding: 22px;
         border-radius: 18px;
     }
 }
 
-
-/* ================================
-   REDUCED MOTION
-================================ */
+/* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
-
     .course-details-page::before,
     .course-details-page::after,
     .course-hero-content,
@@ -561,6 +456,96 @@
     }
 }
 
+* CENTER COURSE HERO CONTENT */
+
+.course-hero {
+    justify-content: center;
+}
+
+.course-hero .container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.course-hero .row {
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.course-hero-content {
+    width: 100%;
+    text-align: center !important;
+    margin: 0 auto;
+}
+
+.course-breadcrumbs {
+    text-align: center !important;
+    width: 100%;
+}
+
+.course-main-title {
+    text-align: center !important;
+    width: 100%;
+}
+
+/* UNIQUE COURSE CONTENT BOXES */
+
+.course-main-card ul,
+.course-main-card ol {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.course-main-card ul li,
+.course-main-card ol li {
+    position: relative;
+    padding: 13px 18px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    background: rgba(124, 58, 237, .10);
+    border: 1px solid rgba(167, 139, 250, .18);
+    color: #d7d9f0;
+    transition: .3s ease;
+}
+
+.course-main-card ul li:hover,
+.course-main-card ol li:hover {
+    transform: translateX(6px);
+    background: rgba(124, 58, 237, .20);
+    border-color: rgba(167, 139, 250, .50);
+    box-shadow: 0 8px 22px rgba(124, 58, 237, .12);
+}
+
+.course-main-card h3 {
+    padding-left: 13px;
+    border-left: 4px solid #8b5cf6;
+}
+
+.course-main-card hr {
+    margin: 35px 0;
+    border-top: 1px solid rgba(167, 139, 250, .18);
+}
+
+.course-video {
+    padding: 10px;
+    background: rgba(124, 58, 237, .10);
+    border-radius: 18px;
+    border: 1px solid rgba(167, 139, 250, .25);
+}
+
+.course-video iframe {
+    border-radius: 12px;
+    height: 320px;
+}
+
+@media (max-width: 575px) {
+    .course-video iframe {
+        height: 220px;
+    }
+}
+
 </style>
 
 </asp:Content>
@@ -568,19 +553,15 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<div class="course-details-page">
-
-    <!-- =========================
-         HERO SECTION
-    ========================== -->
+<<div class="course-details-page">
 
     <section class="course-hero">
 
         <div class="container">
 
-            <div class="row no-gutters align-items-end justify-content-center">
+            <div class="row no-gutters align-items-center justify-content-center">
 
-                <div class="col-md-9 text-center pb-5 course-hero-content">
+                <div class="col-md-9 text-center course-hero-content">
 
                     <p class="breadcrumbs course-breadcrumbs">
 
@@ -602,8 +583,9 @@
 
                     </p>
 
-                    <h1 class="mb-0 course-main-title">
-                        HTML &amp; CSS Course
+                    <h1 class="mb-0 course-main-title"
+                        id="lblCourseTitle"
+                        runat="server">
                     </h1>
 
                 </div>
@@ -615,20 +597,13 @@
     </section>
 
 
-    <!-- =========================
-         COURSE CONTENT
-    ========================== -->
-
     <section class="course-content-section">
 
         <div class="container">
 
             <div class="row">
 
-
-                <!-- =========================
-                     LEFT SIDE
-                ========================== -->
+                <!-- LEFT SIDE -->
 
                 <div class="col-lg-8">
 
@@ -638,174 +613,86 @@
 
                             <img src="images/work-1.jpg"
                                  class="img-fluid"
-                                 alt="Course Image">
+                                 alt="Course Image" />
 
                         </div>
-
 
                         <span class="section-label">
                             Learn Web Development
                         </span>
 
-
-                        <h2>
-                            HTML &amp; CSS Complete Course
-                        </h2>
-
+                        <h2 id="lblCourseName" runat="server"></h2>
 
                         <p>
-                            Learn HTML and CSS from scratch and build responsive websites.
-                            This course is perfect for beginners who want to start web development.
+                            Learn this course from scratch and improve your skills.
+                            This course is useful for students who want to learn new skills.
                         </p>
 
+                       <hr />
 
-                        <hr />
+<h3>What You'll Learn</h3>
 
+<ul>
+    <li>✓ Basic Concepts</li>
+    <li>✓ Important Topics</li>
+    <li>✓ Practical Knowledge</li>
+    <li>✓ Examples</li>
+    <li>✓ Project Work</li>
+</ul>
 
-                        <h3>
-                            What You'll Learn
-                        </h3>
+<hr />
 
+<h3>Course Curriculum</h3>
 
-                        <ul>
+<ol>
+    <li>Introduction</li>
+    <li>Basic Concepts</li>
+    <li>Important Topics</li>
+    <li>Practical Examples</li>
+    <li>Final Project</li>
+</ol>
 
-                            <li>✔ HTML Basics</li>
+<hr />
 
-                            <li>✔ CSS Styling</li>
+<h3>Preview Video</h3>
 
-                            <li>✔ Responsive Design</li>
-
-                            <li>✔ Flexbox</li>
-
-                            <li>✔ CSS Grid</li>
-
-                            <li>✔ Forms</li>
-
-                            <li>✔ Bootstrap Basics</li>
-
-                        </ul>
-
-
-                        <hr />
-
-
-                        <h3>
-                            Course Curriculum
-                        </h3>
-
-
-                        <ol>
-
-                            <li>Introduction</li>
-
-                            <li>HTML Basics</li>
-
-                            <li>HTML Forms</li>
-
-                            <li>CSS Basics</li>
-
-                            <li>Flexbox</li>
-
-                            <li>Responsive Website</li>
-
-                            <li>Mini Project</li>
-
-                        </ol>
-
-
-                        <hr />
-
-
-                        <h3>
-                            Preview Video
-                        </h3>
-
-
-                        <div class="course-video">
-
-                            <iframe width="100%"
-                                    height="450"
-                                    src="https://www.youtube.com/embed/qz0aGYrrlhU"
-                                    frameborder="0"
-                                    allowfullscreen>
-                            </iframe>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =========================
-                     RIGHT SIDE
-                ========================== -->
+<div class="course-video">
+    <iframe width="100%"
+            src="https://www.youtube.com/embed/qz0aGYrrlhU"
+            frameborder="0"
+            allowfullscreen>
+    </iframe>
+</div>
+                <!-- RIGHT SIDE -->
 
                 <div class="col-lg-4">
 
                     <div class="course-info-card">
 
-                        <h3>
-                            Course Information
-                        </h3>
-
+                        <h3>Course Information</h3>
 
                         <div class="course-info-item">
-
-                            <strong>Instructor :</strong>
-                            Tony Garret
-
+                            <strong>Category ID :</strong>
+                            <asp:Label ID="lblCategory" runat="server"></asp:Label>
                         </div>
 
-
                         <div class="course-info-item">
-
-                            <strong>Category :</strong>
-                            Web Development
-
+                            <strong>Status :</strong>
+                            <asp:Label ID="lblStatus" runat="server"></asp:Label>
                         </div>
 
-
                         <div class="course-info-item">
-
-                            <strong>Level :</strong>
-                            Beginner
-
-                        </div>
-
-
-                        <div class="course-info-item">
-
-                            <strong>Duration :</strong>
-                            8 Weeks
-
-                        </div>
-
-
-                        <div class="course-info-item">
-
-                            <strong>Language :</strong>
-                            English
-
-                        </div>
-
-
-                        <div class="course-info-item">
-
                             <strong>Price :</strong>
 
                             <span class="course-price">
-                                ₹199
+                                <asp:Label ID="lblPrice" runat="server"></asp:Label>
                             </span>
 
                         </div>
 
-
-                        <a href="#"
+                        <a href="enrollcourse.aspx"
                            class="btn btn-primary btn-block enroll-btn">
-
                             Enroll Now
-
                         </a>
 
                     </div>

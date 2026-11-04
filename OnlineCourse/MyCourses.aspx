@@ -290,55 +290,78 @@
 
                 <asp:Label ID="lblmsg" runat="server" CssClass="mycourses-message"></asp:Label>
 
-                <div class="mycourses-table-wrap">
-                    <asp:GridView ID="GridView1" runat="server"
-                        AutoGenerateColumns="False"
-                        CssClass="mycourses-grid"
-                        EmptyDataText="You have not enrolled in any courses yet."
-                        GridLines="None">
-                        <Columns>
-                            <asp:TemplateField HeaderText="Course ID">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblCourseID" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+              <div class="mycourses-table-wrap">
+    <asp:GridView ID="GridView1" runat="server"
+        AutoGenerateColumns="False"
+        CssClass="mycourses-grid"
+        EmptyDataText="You have not enrolled in any courses yet."
+        GridLines="None"
+        OnRowCommand="GridView1_RowCommand">
 
-                            <asp:TemplateField HeaderText="Course Name">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblCourseName" runat="server" Text='<%# Eval("CourseName") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+        <Columns>
 
-                            <asp:TemplateField HeaderText="Category">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblCategory" runat="server" Text='<%# Eval("CategoryID") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Course ID">
+                <ItemTemplate>
+                    <asp:Label ID="lblCourseID" runat="server"
+                        Text='<%# Eval("ID") %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="Price">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblPrice" runat="server" Text='<%# Eval("Price") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Course Name">
+                <ItemTemplate>
+                    <asp:Label ID="lblCourseName" runat="server"
+                        Text='<%# Eval("CourseName") %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="Status">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Category">
+                <ItemTemplate>
+                    <asp:Label ID="lblCategory" runat="server"
+                        Text='<%# Eval("CategoryID") %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="Action">
-                                <ItemTemplate>
-                                    <asp:HyperLink ID="lnkContinue" runat="server"
-                                        Text="Continue Learning"
-                                        CssClass="continue-btn"
-                                        NavigateUrl='<%# "CourseDetails.aspx?course=" + Eval("ID") %>'>
-                                    </asp:HyperLink>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>
-                </div>
+            <asp:TemplateField HeaderText="Price">
+                <ItemTemplate>
+                    <asp:Label ID="lblPrice" runat="server"
+                        Text='<%# Eval("Price") %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+
+            <asp:TemplateField HeaderText="Status">
+                <ItemTemplate>
+                    <asp:Label ID="lblStatus" runat="server"
+                        Text='<%# Eval("Status") %>'>
+                    </asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+
+            <asp:TemplateField HeaderText="Action">
+                <ItemTemplate>
+
+                    <asp:HyperLink ID="lnkContinue" runat="server"
+                        Text="Continue Learning"
+                        CssClass="continue-btn"
+                        NavigateUrl='<%# "CourseDetails.aspx?course=" + Eval("ID") %>'>
+                    </asp:HyperLink>
+
+                    <asp:LinkButton ID="btnCertificate" runat="server"
+                        Text="View Certificate"
+                        CssClass="continue-btn"
+                        CommandName="Certificate"
+                        CommandArgument='<%# Eval("ID") %>'>
+                    </asp:LinkButton>
+
+                </ItemTemplate>
+            </asp:TemplateField>
+
+        </Columns>
+    </asp:GridView>
+</div>
 
                 <div class="mycourses-note">
                     <strong>Keep Learning, Keep Growing!</strong>

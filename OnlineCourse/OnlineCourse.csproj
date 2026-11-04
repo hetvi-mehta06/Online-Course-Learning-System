@@ -43,12 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
-
-
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -68,14 +65,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-
-
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-
     <Content Include="about.aspx" />
     <Content Include="about.html" />
     <Content Include="AdminLogin.aspx" />
@@ -184,12 +178,14 @@
     <Content Include="ManageUsers.aspx" />
     <Content Include="ManageVideos.aspx" />
     <Content Include="MyCourses.aspx" />
+    <Content Include="MyNotes.aspx" />
     <Content Include="Panel.aspx" />
     <Content Include="profile.aspx" />
     <Content Include="PythonExam.aspx" />
     <Content Include="readme.txt" />
     <Content Include="register.aspx" />
     <Content Include="StudentDashboard.aspx" />
+    <Content Include="TakeExam.aspx" />
     <Content Include="videolesson.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -390,6 +386,13 @@
     <Compile Include="MyCourses.aspx.designer.cs">
       <DependentUpon>MyCourses.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MyNotes.aspx.cs">
+      <DependentUpon>MyNotes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyNotes.aspx.designer.cs">
+      <DependentUpon>MyNotes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Panel.aspx.cs">
       <DependentUpon>Panel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -440,6 +443,13 @@
     <Compile Include="StudentDashboard.aspx.designer.cs">
       <DependentUpon>StudentDashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TakeExam.aspx.cs">
+      <DependentUpon>TakeExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TakeExam.aspx.designer.cs">
+      <DependentUpon>TakeExam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="videolesson.aspx.cs">
       <DependentUpon>videolesson.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -462,10 +472,7 @@
     <Content Include="images\.DS_Store" />
     <Content Include="js\.DS_Store" />
     <Content Include="Admin.Master" />
-
-
     <None Include="packages.config" />
-
     <Content Include="prepros-6.config" />
     <Content Include="scss\.DS_Store" />
     <Content Include="scss\bootstrap\.DS_Store" />
@@ -562,10 +569,7 @@
     <Content Include="scss\style.scss" />
     <Content Include="Public.Master" />
     <Content Include="Student.Master" />
-
     <None Include="packages.config" />
-
-
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

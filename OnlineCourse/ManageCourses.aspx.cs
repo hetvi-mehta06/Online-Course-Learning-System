@@ -107,24 +107,38 @@ namespace OnlineCourse
 
                 getcon();
 
-                da = new SqlDataAdapter("select * from Course_tbl where ID='" + ViewState["id"] + "'", con);
+                da = new SqlDataAdapter("select * from Course_tbl where ID='" + id + "'", con);
 
                 ds = new DataSet();
                 da.Fill(ds);
 
                 txtCourseName.Text = ds.Tables[0].Rows[0]["CourseName"].ToString();
-                ddlCourse.SelectedValue = ds.Tables[0].Rows[0]["CategoryID"].ToString();
+
+                string categoryid = ds.Tables[0].Rows[0]["CategoryID"].ToString();
+
+                if (ddlCourse.Items.FindByValue(categoryid) != null)
+                {
+                    ddlCourse.SelectedValue = categoryid;
+                }
+
                 txtPrice.Text = ds.Tables[0].Rows[0]["Price"].ToString();
+
                 ddlStatus.SelectedValue = ds.Tables[0].Rows[0]["Status"].ToString();
 
                 con.Close();
             }
+
             else if (e.CommandName == "cmd_delete")
             {
                 getcon();
 
-                cmd = new SqlCommand("delete from Course_tbl where ID='" + id + "'", con);
+                cmd = new SqlCommand("delete from Videos_tbl where CourseID='" + id + "'", con);
+                cmd.ExecuteNonQuery();
 
+                cmd = new SqlCommand("delete from Quiz_tbl where CourseID='" + id + "'", con);
+                cmd.ExecuteNonQuery();
+
+                cmd = new SqlCommand("delete from Course_tbl where ID='" + id + "'", con);
                 cmd.ExecuteNonQuery();
 
                 con.Close();
@@ -135,9 +149,8 @@ namespace OnlineCourse
                 fillgrid();
                 con.Close();
 
-                lblMessage.Text = "Course deleted successfully";
+                lblMessage.Text = "Course Deleted Successfully";
             }
-
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
