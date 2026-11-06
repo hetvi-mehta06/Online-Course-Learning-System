@@ -32,6 +32,18 @@ namespace OnlineCourse
 
         void filldata()
         {
+            if (Session["student"] == null)
+            {
+                Response.Redirect("login.aspx");
+                return;
+            }
+
+            if (Session["CourseID"] == null)
+            {
+                lblMessage.Text = "Course ID is not available.";
+                return;
+            }
+
             getcon();
 
             string email = Session["student"].ToString();
@@ -56,8 +68,6 @@ namespace OnlineCourse
             {
                 lblMessage.Text = "Certificate is not available. Please complete your exam first.";
             }
-
-            con.Close();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
