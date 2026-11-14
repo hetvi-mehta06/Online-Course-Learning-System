@@ -108,7 +108,7 @@ namespace OnlineCourse
 
                 cmd.ExecuteNonQuery();
 
-                con.Close();
+               
 
                 clear();
                 fillgrid();
@@ -171,7 +171,6 @@ namespace OnlineCourse
 
                 cmd.ExecuteNonQuery();
 
-                con.Close();
 
                 fillgrid();
                 clear();
